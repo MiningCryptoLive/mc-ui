@@ -158,7 +158,7 @@ function loadHomePage() {
         poolCoinTableTemplate += "<td class='fee'>" + value.poolFeePercent + " %</td>";
         poolCoinTableTemplate += "<td class='net-hash'>" + _formatter(value.networkStats.networkHashrate, 5, "H/s") + "</td>";
         poolCoinTableTemplate += "<td class='net-diff'>" + _formatter(value.networkStats.networkDifficulty, 5, "") + "</td>";
-        poolCoinTableTemplate += "<td class='card-btn col-hide'>Go Mine " + coinLogo + coinName + "</td>";
+        poolCoinTableTemplate += "<td class='card-btn col-hide'>Go Mine " + coinLogo + "</td>";
         poolCoinTableTemplate += "</tr>";
       });
 
