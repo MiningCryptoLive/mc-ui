@@ -25,7 +25,7 @@ if (API.substring(API.length - 1) != "/") {
   API = API + "/";
   console.log('Corrected API, does not end with / -> New API : ', API);
 }
-var stratumAddress = "stratum+tcp://" + hostname;           				// Stratum address is:  domain.com
+var stratumAddress = hostname;           				// Stratum address is:  domain.com
 
 
 // --------------------------------------------------------------------------------------------
@@ -377,7 +377,7 @@ function loadConnectPage() {
 
           // Connect Pool config table
           connectPoolConfig += "<tr><td>Crypto Coin name</td><td>" + coinName + " (" + value.coin.type + ") </td></tr>";
-          //connectPoolConfig += "<tr><td>Coin Family line </td><td>" + value.coin.family + "</td></tr>";
+          connectPoolConfig += "<tr><td>Coin Family line </td><td>" + value.coin.family + "</td></tr>";
           connectPoolConfig += "<tr><td>Coin Algorithm</td><td>" + value.coin.algorithm + "</td></tr>";
           connectPoolConfig += '<tr><td>Pool Wallet</td><td><a href="' + value.addressInfoLink + '" target="_blank">' + value.address.substring(0, 12) + " &hellip; " + value.address.substring(value.address.length - 12) + "</a></td></tr>";
           connectPoolConfig += "<tr><td>Payout Scheme</td><td>" + value.paymentProcessing.payoutScheme + "</td></tr>";
@@ -387,7 +387,7 @@ function loadConnectPage() {
           }
           connectPoolConfig += "<tr><td>Pool Fee</td><td>" + value.poolFeePercent + "%</td></tr>";
           $.each(value.ports, function (port, options) {
-            connectPoolConfig += "<tr><td>stratum+tcp://" + coinType + "." + stratumAddress + ":" + port + "</td><td>";
+            connectPoolConfig += "<tr><td>stratum+tcp://fr" + coinType + "." + stratumAddress + ":" + port + "</td><td>";
             if (typeof options.varDiff !== "undefined" && options.varDiff != null) {
               connectPoolConfig += "Difficulty Variable / " + options.varDiff.minDiff + " &harr; ";
               if (typeof options.varDiff.maxDiff === "undefined" || options.varDiff.maxDiff == null) {
@@ -405,7 +405,7 @@ function loadConnectPage() {
       });
       connectPoolConfig += "</tbody>";
       $("#connectPoolConfig").html(connectPoolConfig);
-      
+
       // Connect Miner config 
       $("#miner-config").html("");
       $("#miner-config").load("poolconfig/" + coinType + ".html",
