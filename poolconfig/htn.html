@@ -1,59 +1,95 @@
 <div class="card">
 	<div class="card-header bg-teal-gradient">
-		<h4 class="card-title"><i class="fas fa-tools"></i> Miner Configuration</h4>
-		<p class="card-category">
-			This is the basic guide how to setup your miner to this pool.
-		</p>
+			<h4 class="card-title"><i class="fas fa-tools"></i> Miner Configuration</h4>
+			<p class="card-category">This is the basic guide on how to set up your miner for this pool.</p>
 	</div>
 	<div class="card-body">
-		<div class="typo-line">
-			<h2>Getting started</h2>
-			<hr />
-			<p>
-				To get started mining and use this pool you need the following
-			<ul>
-				<li>{{ coinName }} Wallet address</li>
-				<li>crypto mining software that supports the {{ coinName }} coin and aglorithm {{ aglorithm }}</li>
-				<li>hardware to run it on. This can be you home PC, mining rig, ASIC miner or cloud mining</li>
-			</ul>
-			</br>
-			<h4>{{ coinName }} Wallet address</h4>
-			A wallet address is needed to payout you shares mined at this pool server.</br>
-			When the total mined value is past the payout threshold, we will send your coin to this wallet address.</br>
-			</br>
-			</br>
-			<h4>crypto mining software</h4>
-			To mine at this pool you can use any miner supporting the {{ aglorithm }} aglorithm or {{ coinName }} coin.</br>
-			Use an search engine and search for "{{ coinName }} miner software".
-			download the miner software and configure your crypto miner.</br>
-			</p>
-			<p>Where:</p>
-			<ul>
-				<li>POOL STRATUM ADDRESS AND PORT - one off the stratum addresses above in the Pool Configuration section
-					depending on the difficuty you want</li>
-				<li>YOUR_WALLET_ADDRESS - your valid {{ coinName }} wallet address</li>
-				<li>WORKERNAME - an optional workername can be used to identify the miner or RIG</li>
-				<li>PASSWORD - use x or leave it blank</li>
-				</br>
-				Optional:
-				<li>STATIC DIFFICULTY - to mine with a static (fixed) difficulty
-					simply use&nbsp;<code>d=xxx</code>&nbsp;as password in your
-					miner configuration where&nbsp;<code>xxx</code>&nbsp;denotes your
-					preferred difficulty.
-				</li>
-			</ul>
-			</br>
-			<hr />
-			<div class="well well-lg"><span>For AMD Graphic cards in a Windows system, make sure you add this at the top of
-					your .bat file:</span></br>
-				<pre class="pre-help">
-				setx GPU_FORCE_64BIT_PTR 0
-				setx GPU_MAX_HEAP_SIZE 100
-				setx GPU_USE_SYNC_OBJECTS 1
-				setx GPU_MAX_ALLOC_PERCENT 100
-				setx GPU_SINGLE_ALLOC_PERCENT 100
-      </pre>
+			<div class="typo-line">
+					<h2>Getting Started</h2>
+					<hr>
+					<p>To begin mining and use this pool, you'll need:</p>
+					<ul>
+							<li>HTN Wallet address: <a href="https://wallet.hoosat.fi">Web Wallet</a></li>
+							<li>Crypto mining software that supports the HTN coin and Pyrinhash algorithm</li>
+							<li>Hardware to run it on. This can be your home PC, mining rig, ASIC miner, or cloud mining</li>
+					</ul>
+					<h4>HTN Wallet Address</h4>
+					<p>A wallet address is required to receive payouts for your mined shares on this pool server. Once
+							the total mined value surpasses the payout threshold, your coins will be sent to this wallet
+							address.</p>
+					<h4>Crypto Mining Software</h4>
+					<p>To mine at this pool, you can use any miner supporting the etchash algorithm or HTN coin. Simply
+							search for "HTN miner software" using a search engine, download the miner software, and
+							configure your crypto miner accordingly.</p>
+					<p><strong>Configuration Parameters:</strong></p>
+					<ul>
+							<li>POOL STRATUM ADDRESS AND PORT - <code>stratum+tcp://fr.htn.pool.hoosat.fi:42494</code></li>
+							<li>YOUR_WALLET_ADDRESS - Your valid HTN wallet address</li>
+							<li>WORKERNAME - An optional workername to identify the miner or RIG</li>
+							<li>PASSWORD - Use 'x' or leave it blank</li>
+							<li>Optional: STATIC DIFFICULTY - To mine with a static (fixed) difficulty, use <code>d=xxx</code>
+									as the password in your miner configuration, where <code>xxx</code> denotes your preferred
+									difficulty.</li>
+					</ul>
+					<hr>
+					<div class="well well-lg">
+							<p><strong>For AMD Graphic Cards in a Windows System:</strong> Make sure you add this at the top of
+									your .bat file:</p>
+							<pre class="pre-help">
+									setx GPU_FORCE_64BIT_PTR 0
+									setx GPU_MAX_HEAP_SIZE 100
+									setx GPU_USE_SYNC_OBJECTS 1
+									setx GPU_MAX_ALLOC_PERCENT 100
+									setx GPU_SINGLE_ALLOC_PERCENT 100
+							</pre>
+					</div>
+					<h4>Configuration Examples</h4>
+					<h5>lolMiner Configuration</h5>
+					<pre class="pre-help">
+									lolMiner.exe --algo PYRIN --pool stratum+tcp://fr.htn.pool.hoosat.fi:42494 --user YOUR_WALLET_ADDRESS.WORKERNAME --pass x
+							</pre>
+					<h5>SRBMiner Configuration</h5>
+					<pre class="pre-help">
+									SRBMiner-MULTI.exe --algorithm PYRIN --pool stratum+tcp://fr.htn.pool.hoosat.fi:42494 --wallet YOUR_WALLET_ADDRESS --worker WORKERNAME --password x
+							</pre>
+					<h5>HiveOS Configuration</h5>
+					<p>For HiveOS, use the following configuration:</p>
+					<ol>
+							<li>Click the flight sheet JSON below</li>
+							<li>Go to Hive OS-farm (page that shows all workers)</li>
+							<li>Click on Flight Sheets tab</li>
+							<li>Click on Import from Clipboard</li>
+							<li>Create Flight Sheet and add wallet</li>
+							<li>Run flight sheet on workers!</li>
+					</ol>
+					<pre><code>
+							{
+									"name": "Hoosat",
+									"isFavorite": true,
+									"items": [
+											{
+													"coin": "htn",
+													"pool_ssl": false,
+													"dpool_ssl": false,
+													"miner": "lolminer",
+													"miner_config": {
+															"algo": "pyrin",
+															"template": "%WAL%.%WORKER_NAME%",
+															"tls": "0",
+															"server": "fr.htn.pool.hoosat.fi",
+															"port": "42494",
+															"pass": "x"
+													},
+													"pool_geo": [
+															{
+																	"url": "fr.htn.pool.hoosat.fi",
+																	"geo": "FR"
+															}
+													]
+											}
+									]
+							}
+					</code></pre>
 			</div>
-		</div>
 	</div>
 </div>
