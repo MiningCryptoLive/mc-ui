@@ -11,27 +11,16 @@
 // --------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
 // read WebURL from current browser
-var hostname = "mainnet-node-5.hoosat.fi:4000"
-var WebURL         = "http://" + hostname + "/";  // Website URL is:  https://domain.com/
+var hostname = "pool.hoosat.fi"
+var WebURL         = "https://" + hostname + "/";  // Website URL is:  https://domain.com/
 // WebURL correction if not ends with /
 if (WebURL.substring(WebURL.length-1) != "/")
 {
 	WebURL = WebURL + "/";
 	console.log('Corrected WebURL, does not end with / -> New WebURL : ', WebURL);
 }
-var API            = WebURL + "api/";   						// API address is:  https://domain.com/api/
+var API            = "https://fr.pool.hoosat.fi/api/";   						// API address is:  https://domain.com/api/
 // API correction if not ends with /
 if (API.substring(API.length-1) != "/")
 {
