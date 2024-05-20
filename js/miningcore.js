@@ -299,6 +299,7 @@ function loadBlocksPage() {
           blockList += "<tr>";
           blockList += "<td>" + createDate + "</td>";
           blockList += "<td><a href='" + value.infoLink + "' target='_blank'>" + value.blockHeight + "</a></td>";
+          blockList += "<td>" + (value.networkDifficulty / 1000000000000).toFixed(2) + " Trillion</a></td>";
           if (typeof value.effort !== "undefined") {
             blockList += "<td class='" + effortClass + "'>" + effort + "%</td>";
           } else {
