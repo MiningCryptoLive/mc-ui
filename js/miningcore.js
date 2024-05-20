@@ -23,7 +23,8 @@
 
 
 // read WebURL from current browser
-var WebURL         = window.location.protocol + "//" + window.location.hostname + "/";  // Website URL is:  https://domain.com/
+var hostname = "mainnet-node-5.hoosat.fi:4000"
+var WebURL         = "http://" + hostname + "/";  // Website URL is:  https://domain.com/
 // WebURL correction if not ends with /
 if (WebURL.substring(WebURL.length-1) != "/")
 {
@@ -37,7 +38,7 @@ if (API.substring(API.length-1) != "/")
 	API = API + "/";
 	console.log('Corrected API, does not end with / -> New API : ', API);
 } 
-var stratumAddress = window.location.hostname;           				// Stratum address is:  domain.com
+var stratumAddress = "stratum+tcp://" + hostname;           				// Stratum address is:  domain.com
 
 
 

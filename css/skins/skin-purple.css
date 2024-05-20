@@ -3,10 +3,10 @@
  * ------------
  */
 .skin-purple .main-header .navbar {
-  background-color: #605ca8;
+  background-color: rgb(33, 37, 41);
 }
 .skin-purple .main-index-header .navbar {
-  background-color: #605ca8;
+  background-color: rgb(33, 37, 41);
 }
 .skin-purple .main-header .navbar .nav > li > a {
   color: #ffffff;
