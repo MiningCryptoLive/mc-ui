@@ -284,7 +284,7 @@ function loadBlocksPage() {
       if (data.length > 0) {
         $.each(data, function (index, value) {
           var createDate = convertLocalDateToUTCDate(new Date(value.created), false);
-          var effort = parseFloat(value.effort * 100).toFixed(2);
+          var effort = parseFloat(value.effort * 1e13).toFixed(2);
           var effortClass = "";
           if (effort < 30) {
             effortClass = "effort1";
