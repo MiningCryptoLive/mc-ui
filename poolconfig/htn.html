@@ -36,11 +36,11 @@
 							<p><strong>For AMD Graphic Cards in a Windows System:</strong> Make sure you add this at the top of
 									your .bat file:</p>
 							<code>
-									setx GPU_FORCE_64BIT_PTR 0
-									setx GPU_MAX_HEAP_SIZE 100
-									setx GPU_USE_SYNC_OBJECTS 1
-									setx GPU_MAX_ALLOC_PERCENT 100
-									setx GPU_SINGLE_ALLOC_PERCENT 100
+									setx GPU_FORCE_64BIT_PTR 0<br>
+									setx GPU_MAX_HEAP_SIZE 100<br>
+									setx GPU_USE_SYNC_OBJECTS 1<br>
+									setx GPU_MAX_ALLOC_PERCENT 100<br>
+									setx GPU_SINGLE_ALLOC_PERCENT 100<br>
 							</code>
 					</div>
 					<h4>Configuration Examples</h4>
@@ -63,33 +63,33 @@
 							<li>Run flight sheet on workers!</li>
 					</ol>
 					<code>
-							{
-									"name": "Hoosat",
-									"isFavorite": true,
-									"items": [
-											{
-													"coin": "htn",
-													"pool_ssl": false,
-													"dpool_ssl": false,
-													"miner": "lolminer",
-													"miner_config": {
-															"algo": "pyrin",
-															"template": "%WAL%.%WORKER_NAME%",
-															"tls": "0",
-															"server": "fr.htn.pool.hoosat.fi",
-															"port": "42494",
-															"pass": "x"
-													},
-													"pool_geo": [
-															{
-																	"url": "fr.htn.pool.hoosat.fi",
-																	"geo": "FR"
-															}
-													]
-											}
-									]
-							}
-					</code>
+							&lt;{&gt;<br>
+								&emsp;&lt;"name": "Hoosat",&gt;<br>
+									&emsp;&emsp;&lt;"isFavorite": true,&gt;<br>
+									&emsp;&emsp;&lt;"items": [&gt;<br>
+									&emsp;&emsp;&lt;{&gt;<br>
+										&emsp;&emsp;&emsp;&lt;"coin": "htn",&gt;<br>
+											&emsp;&emsp;&emsp;&emsp;&lt;"pool_ssl": false,&gt;<br>
+											&emsp;&emsp;&emsp;&emsp;&lt;"dpool_ssl": false,&gt;<br>
+											&emsp;&emsp;&emsp;&emsp;&lt;"miner": "lolminer",&gt;<br>
+											&emsp;&emsp;&emsp;&emsp;&lt;"miner_config": {&gt;<br>
+												&emsp;&emsp;&emsp;&emsp;&emsp;&lt;"algo": "pyrin",&gt;<br>
+													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&lt;"template": "%WAL%.%WORKER_NAME%",&gt;<br>
+													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&lt;"tls": "0",&gt;<br>
+													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&lt;"server": "fr.htn.pool.hoosat.fi",&gt;<br>
+													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&lt;"port": "42494",&gt;<br>
+													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&lt;"pass": "x"&gt;<br>
+													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&lt;},&gt;<br>
+													&emsp;&emsp;&emsp;&emsp;&emsp;&lt;"pool_geo": [&gt;<br>
+													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&lt;{&gt;<br>
+														&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&lt;"url": "fr.htn.pool.hoosat.fi",&gt;<br>
+														&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&lt;"geo": "FR"&gt;<br>
+														&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&lt;}&gt;<br>
+													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&lt;]&gt;<br>
+												&emsp;&emsp;&emsp;&emsp;&lt;}&gt;<br>
+											&emsp;&emsp;&emsp;&emsp;&lt;]&gt;<br>
+										&emsp;&emsp;&emsp;&emsp;&lt;}&gt;<br>
+				</code>
 			</div>
 	</div>
 </div>
