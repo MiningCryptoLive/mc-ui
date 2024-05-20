@@ -35,23 +35,23 @@
 					<div class="well well-lg">
 							<p><strong>For AMD Graphic Cards in a Windows System:</strong> Make sure you add this at the top of
 									your .bat file:</p>
-							<pre class="pre-help">
+							<code>
 									setx GPU_FORCE_64BIT_PTR 0
 									setx GPU_MAX_HEAP_SIZE 100
 									setx GPU_USE_SYNC_OBJECTS 1
 									setx GPU_MAX_ALLOC_PERCENT 100
 									setx GPU_SINGLE_ALLOC_PERCENT 100
-							</pre>
+							</code>
 					</div>
 					<h4>Configuration Examples</h4>
 					<h5>lolMiner Configuration</h5>
-					<pre class="pre-help">
-									lolMiner.exe --algo PYRIN --pool stratum+tcp://fr.htn.pool.hoosat.fi:42494 --user YOUR_WALLET_ADDRESS.WORKERNAME --pass x
-							</pre>
+					<code>
+							lolMiner.exe --algo PYRIN --pool stratum+tcp://fr.htn.pool.hoosat.fi:42494 --user YOUR_WALLET_ADDRESS.WORKERNAME --pass x
+					</code>
 					<h5>SRBMiner Configuration</h5>
-					<pre class="pre-help">
-									SRBMiner-MULTI.exe --algorithm PYRIN --pool stratum+tcp://fr.htn.pool.hoosat.fi:42494 --wallet YOUR_WALLET_ADDRESS --worker WORKERNAME --password x
-							</pre>
+					<code>
+							SRBMiner-MULTI.exe --algorithm PYRIN --pool stratum+tcp://fr.htn.pool.hoosat.fi:42494 --wallet YOUR_WALLET_ADDRESS --worker WORKERNAME --password x
+					</code>
 					<h5>HiveOS Configuration</h5>
 					<p>For HiveOS, use the following configuration:</p>
 					<ol>
@@ -62,7 +62,7 @@
 							<li>Create Flight Sheet and add wallet</li>
 							<li>Run flight sheet on workers!</li>
 					</ol>
-					<pre><code>
+					<code>
 							{
 									"name": "Hoosat",
 									"isFavorite": true,
@@ -89,7 +89,7 @@
 											}
 									]
 							}
-					</code></pre>
+					</code>
 			</div>
 	</div>
 </div>
