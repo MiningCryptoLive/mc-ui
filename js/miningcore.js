@@ -46,6 +46,22 @@ if (is_IE) {
   console.log('Running in IE browser is not supported - ', nua);
 }
 
+
+  
+$(document).ready(function () {
+  $('.sidebar-toggle').on('click', function (e) {
+    e.preventDefault();
+    var opened = $("body").hasClass("sidebar-collapse");
+    if (opened === true) {
+      $(".main-sidebar").show();
+      $("body").removeClass("sidebar-collapse");
+    } else {
+      $(".main-sidebar").hide();
+      $("body").addClass("sidebar-collapse");
+    }
+  });
+});
+
 // Load INDEX Page content
 function loadIndex() {
   $("div[class^='page-").hide();
@@ -80,7 +96,6 @@ function loadIndex() {
     $(".page-index").show();
     $(".main-sidebar").hide();
   }
-
   if (currentPool) {
     $("li[class^='nav-']").removeClass("active");
 
@@ -129,6 +144,7 @@ function loadIndex() {
   } else {
     loadHomePage();
   }
+
   scrollPageTop();
 }
 
@@ -174,7 +190,6 @@ function loadHomePage() {
           }
         });
       });
-
     })
     .fail(function () {
       var poolCoinTableTemplate = "";
