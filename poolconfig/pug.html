@@ -9,24 +9,24 @@
 					<hr>
 					<p>To begin mining and use this pool, you'll need:</p>
 					<ul>
-							<li>Bugdag Wallet address: <a href="https://wallet.pugdag.com">Web Wallet</a></li>
-							<li>Crypto mining software that supports the Bugdag coin and Pyrinhash algorithm</li>
+							<li>pugdag Wallet address: <a href="https://wallet.pugdag.com">Web Wallet</a></li>
+							<li>Crypto mining software that supports the pugdag coin and Pyrinhash algorithm</li>
 							<li>Hardware to run it on. This can be your home PC, mining rig, ASIC miner, or cloud mining</li>
 					</ul>
 					<hr>
-					<h4>Bugdag Wallet Address</h4>
+					<h4>pugdag Wallet Address</h4>
 					<p>A wallet address is required to receive payouts for your mined shares on this pool server. Once
 							the total mined value surpasses the payout threshold, your coins will be sent to this wallet
 							address.</p>
 					<hr>
 					<h4>Crypto Mining Software</h4>
-					<p>To mine at this pool, you can use any miner supporting the etchash algorithm or Bugdag coin. Simply
-							search for "Bugdag miner software" using a search engine, download the miner software, and
+					<p>To mine at this pool, you can use any miner supporting the etchash algorithm or pugdag coin. Simply
+							search for "pugdag miner software" using a search engine, download the miner software, and
 							configure your crypto miner accordingly.</p>
 					<p><strong>Configuration Parameters:</strong></p>
 					<ul>
-							<li>POOL STRATUM ADDRESS AND PORT - <code>stratum+tcp://fr.bug.pool.hoosat.fi:42494</code></li>
-							<li>YOUR_WALLET_ADDRESS - Your valid Bugdag wallet address</li>
+							<li>POOL STRATUM ADDRESS AND PORT - <code>stratum+tcp://fr.pug.pool.hoosat.fi:42494</code></li>
+							<li>YOUR_WALLET_ADDRESS - Your valid pugdag wallet address</li>
 							<li>WORKERNAME - An optional workername to identify the miner or RIG</li>
 							<li>PASSWORD - Use 'x' or leave it blank</li>
 							<li>Optional: STATIC DIFFICULTY - To mine with a static (fixed) difficulty, use <code>d=xxx</code>
@@ -48,11 +48,11 @@
 					<h4 class="mt-4">Configuration Examples</h4>
 					<h5 class="mt-2">lolMiner Configuration</h5>
 					<code>
-							lolMiner.exe --algo PYRIN --pool stratum+tcp://fr.bug.pool.hoosat.fi:42494 --user YOUR_WALLET_ADDRESS.WORKERNAME --pass x
+							lolMiner.exe --algo PYRIN --pool stratum+tcp://fr.pug.pool.hoosat.fi:42494 --user YOUR_WALLET_ADDRESS.WORKERNAME --pass x
 					</code>
 					<h5 class="mt-2">SRBMiner Configuration</h5>
 					<code>
-							SRBMiner-MULTI.exe --algorithm PYRIN --pool stratum+tcp://fr.bug.pool.hoosat.fi:42494 --wallet YOUR_WALLET_ADDRESS --worker WORKERNAME --password x
+							SRBMiner-MULTI.exe --algorithm PYRIN --pool stratum+tcp://fr.pug.pool.hoosat.fi:42494 --wallet YOUR_WALLET_ADDRESS --worker WORKERNAME --password x
 					</code>
 					<h5 class="mt-2">HiveOS Configuration</h5>
 					<p>For HiveOS, use the following configuration:</p>
@@ -66,11 +66,11 @@
 					</ol>
 					<code>
 							{<br>
-								&emsp;"name": "Bugdag",<br>
+								&emsp;"name": "pugdag",<br>
 									&emsp;&emsp;"isFavorite": true,<br>
 									&emsp;&emsp;"items": [<br>
 									&emsp;&emsp;{<br>
-										&emsp;&emsp;&emsp;"coin": "Bugdag",<br>
+										&emsp;&emsp;&emsp;"coin": "pugdag",<br>
 											&emsp;&emsp;&emsp;&emsp;"pool_ssl": false,<br>
 											&emsp;&emsp;&emsp;&emsp;"dpool_ssl": false,<br>
 											&emsp;&emsp;&emsp;&emsp;"miner": "lolminer",<br>
@@ -78,13 +78,13 @@
 												&emsp;&emsp;&emsp;&emsp;&emsp;"algo": "pyrin",<br>
 													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"template": "%WAL%.%WORKER_NAME%",<br>
 													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"tls": "0",<br>
-													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"server": "fr.bug.pool.hoosat.fi",<br>
+													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"server": "fr.pug.pool.hoosat.fi",<br>
 													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"port": "42494",<br>
 													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"pass": "x"<br>
 													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;},<br>
 													&emsp;&emsp;&emsp;&emsp;&emsp;"pool_geo": [<br>
 													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{<br>
-														&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"url": "fr.bug.pool.hoosat.fi",<br>
+														&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"url": "fr.pug.pool.hoosat.fi",<br>
 														&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"geo": "FR"<br>
 														&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;}<br>
 													&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;]<br>
