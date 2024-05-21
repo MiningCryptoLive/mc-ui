@@ -183,7 +183,7 @@ function loadHomePage() {
         }
         poolCoinTableTemplate += "<td class='fee'>" + value.poolFeePercent + " %</td>";
 
-        if(value.networkHashRate !== undefined) {
+        if(value.networkStats !== undefined) {
           poolCoinTableTemplate += "<td class='net-hash'>" + _formatter(value.networkStats.networkHashrate, 5, "H/s") + "</td>";
           poolCoinTableTemplate += "<td class='net-diff'>" + _formatter(value.networkStats.networkDifficulty, 5, "") + "</td>";
         } else {
