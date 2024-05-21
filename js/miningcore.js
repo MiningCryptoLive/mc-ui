@@ -162,6 +162,7 @@ function loadHomePage() {
       //const poolCoinTableTemplate = "";  //$(".index-coin-table-template").html();
 
       var poolCoinTableTemplate = "";
+      console.log(data);
 
       $.each(data.pools, function (index, value) {
 
@@ -173,11 +174,22 @@ function loadHomePage() {
         poolCoinTableTemplate += "<td class='coin'><a href='#" + value.id + "'<span>" + coinLogo + coinName + " (" + value.coin.type.toUpperCase() + ") </span></a></td>";
         poolCoinTableTemplate += "<td class='coin'>" + value.id + "</td>";
         poolCoinTableTemplate += "<td class='algo'>" + value.coin.algorithm + "</td>";
-        poolCoinTableTemplate += "<td class='miners'>" + value.poolStats.connectedMiners === undefined ? value.poolStats.connectedMiners : "" + "</td>";
-        poolCoinTableTemplate += "<td class='pool-hash'>" + _formatter(value.poolStats.poolHashrate, 5, "H/s") + "</td>";
+        if(value.poolStats !== undefined) {
+          poolCoinTableTemplate += "<td class='miners'>" + value.poolStats.connectedMiners+ "</td>";
+          poolCoinTableTemplate += "<td class='pool-hash'>" + _formatter(value.poolStats.poolHashrate, 5, "H/s") + "</td>";
+        } else {
+          poolCoinTableTemplate += "<td class='miners'></td>";
+          poolCoinTableTemplate += "<td class='pool-hash'></td>";
+        }
         poolCoinTableTemplate += "<td class='fee'>" + value.poolFeePercent + " %</td>";
-        poolCoinTableTemplate += "<td class='net-hash'>" + _formatter(value.networkStats.networkHashrate, 5, "H/s") + "</td>";
-        poolCoinTableTemplate += "<td class='net-diff'>" + _formatter(value.networkStats.networkDifficulty, 5, "") + "</td>";
+
+        if(value.networkHashRate !== undefined) {
+          poolCoinTableTemplate += "<td class='net-hash'>" + _formatter(value.networkStats.networkHashrate, 5, "H/s") + "</td>";
+          poolCoinTableTemplate += "<td class='net-diff'>" + _formatter(value.networkStats.networkDifficulty, 5, "") + "</td>";
+        } else {
+          poolCoinTableTemplate += "<td class='net-hash'></td>";
+          poolCoinTableTemplate += "<td class='net-diff'></td>";
+        }
         poolCoinTableTemplate += "<td class='card-btn col-hide'>Go Mine " + coinLogo + "</td>";
         poolCoinTableTemplate += "</tr>";
       });
