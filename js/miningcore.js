@@ -173,7 +173,7 @@ function loadHomePage() {
         poolCoinTableTemplate += "<td class='coin'><a href='#" + value.id + "'<span>" + coinLogo + coinName + " (" + value.coin.type.toUpperCase() + ") </span></a></td>";
         poolCoinTableTemplate += "<td class='coin'>" + value.id + "</td>";
         poolCoinTableTemplate += "<td class='algo'>" + value.coin.algorithm + "</td>";
-        poolCoinTableTemplate += "<td class='miners'>" + value.poolStats.connectedMiners + "</td>";
+        poolCoinTableTemplate += "<td class='miners'>" + value.poolStats.connectedMiners === undefined ? value.poolStats.connectedMiners : "" + "</td>";
         poolCoinTableTemplate += "<td class='pool-hash'>" + _formatter(value.poolStats.poolHashrate, 5, "H/s") + "</td>";
         poolCoinTableTemplate += "<td class='fee'>" + value.poolFeePercent + " %</td>";
         poolCoinTableTemplate += "<td class='net-hash'>" + _formatter(value.networkStats.networkHashrate, 5, "H/s") + "</td>";
