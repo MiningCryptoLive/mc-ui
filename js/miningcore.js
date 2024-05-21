@@ -55,8 +55,10 @@ $(document).ready(function () {
     if (opened === true) {
       $(".main-sidebar").show();
       $("body").removeClass("sidebar-collapse");
+      $("body").addClass("sidebar-open");
     } else {
       $(".main-sidebar").hide();
+      $("body").removeClass("sidebar-open");
       $("body").addClass("sidebar-collapse");
     }
   });
@@ -89,12 +91,14 @@ function loadIndex() {
     $(".main-index").hide();
     $(".main-pool").show();
     $(".page-" + currentPage).show();
-    $(".main-sidebar").show();
+    $("body").removeClass("sidebar-open");
+    $("body").addClass("sidebar-collapse");
   } else {
     $(".main-index").show();
     $(".main-pool").hide();
     $(".page-index").show();
-    $(".main-sidebar").hide();
+    $("body").removeClass("sidebar-open");
+    $("body").addClass("sidebar-collapse");
   }
   if (currentPool) {
     $("li[class^='nav-']").removeClass("active");
