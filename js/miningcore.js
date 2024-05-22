@@ -88,7 +88,7 @@ function loadIndex() {
   }
   if (currentPool && currentPage) {
     loadNavigation();
-    $(".main-index").hide();
+    $(".main-index").show();
     $(".main-pool").show();
     $(".page-" + currentPage).show();
     $("body").removeClass("sidebar-open");
@@ -570,6 +570,7 @@ function doesFileExist(urlToFile) {
 function loadStatsData() {
   return $.ajax(API + "pools")
     .done(function (data) {
+      console.log(data);
       $.each(data.pools, function (index, value) {
         if (currentPool === value.id) {
 
@@ -605,6 +606,7 @@ function loadStatsData() {
 function loadStatsChart() {
   return $.ajax(API + "pools/" + currentPool + "/performance")
     .done(function (data) {
+      console.log(data);
       labels = [];
 
       poolHashRate = [];
