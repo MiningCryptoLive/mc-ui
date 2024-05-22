@@ -483,12 +483,18 @@ function loadConnectPage() {
 // Dashboard - load wallet stats
 function loadWallet() {
   console.log('Loading wallet address:', $("#walletAddress").val());
+  var walletAddress = "";
   if ($("#walletAddress").val().length > 0) {
-    localStorage.setItem(currentPool + "-walletAddress", $("#walletAddress").val());
+    walletAddress = $("#walletAddress").val();
+    localStorage.setItem(currentPool + "-walletAddress", walletAddress);
   }
   var coin = window.location.hash.split(/[#/?]/)[1];
   var currentPage = window.location.hash.split(/[#/?]/)[2] || "stats";
-  window.location.href = "#" + currentPool + "/" + currentPage + "?address=" + $("#walletAddress").val();
+  window.location.href = "#" + currentPool + "/" + currentPage + "?address=" + walletAddress;
+  $.get(API + "pools/" + currentPool + "/miners/" + walletAddress + "/settings", (response) => {
+    console.log(response);
+    $("#payment-treshold").val(response.paymentThreshold)
+  })
   $(".payment-threshold").show();
   
 }
@@ -496,14 +502,12 @@ function loadWallet() {
 function updatePaymentThreshold() {
   var paymentThreshold = $("#payment-treshold").val();
   var walletAddress = $("#walletAddress").val();
-  console.log(paymentThreshold);
-  console.log(walletAddress);
   if (!paymentThreshold || paymentThreshold <= 0) {
     alert("Please enter a valid payment threshold.");
     return;
   }
-  $.get("https://api.ipify.org?format=json", function(data) {
-    var ipAddress = data.ip;
+  $.get("https://api.ipify.org?format=json", function(response) {
+    var ipAddress = response.ip;
     $.ajax({
       url: API + "pools/" + currentPool + "/miners/" + walletAddress + "/settings",
       type: "POST",
@@ -609,8 +613,41 @@ function loadStatsData() {
       console.log(data);
       $.each(data.pools, function (index, value) {
         if (currentPool === value.id) {
-
+          console.log(value);
           $("#blockchainHeight").text(value.networkStats.blockHeight);
+          $("#poolEffort").text(parseFloat(value.poolEffort * 1e12).toFixed(2) + "%");
+          $("#totalBlocks").text(value.totalBlocks);
+          if(value.totalPaid > 1000000) {
+            $("#paymentsDone").text(parseFloat(value.totalPaid / 1000).toFixed(2) + " M " + value.coin.symbol);
+          } else if(value.totalPaid > 1000) {
+            $("#paymentsDone").text(parseFloat(value.totalPaid / 1000).toFixed(2) + " K " + value.coin.symbol);
+          } else {
+            $("#paymentsDone").text(parseFloat(value.totalPaid).toFixed(2) + " " + value.coin.symbol);
+          }
+
+          const givenDate = new Date(value.lastPoolBlockTime);
+          const currentDate = new Date();
+          const differenceInMillis = currentDate - givenDate;
+          const differenceInSeconds = Math.floor(differenceInMillis / 1000);
+          const differenceInMinutes = Math.floor(differenceInSeconds / 60);
+          const differenceInHours = Math.floor(differenceInMinutes / 60);
+          const differenceInDays = Math.floor(differenceInHours / 24);
+          const remainingHours = differenceInHours % 24;
+          const remainingMinutes = differenceInMinutes % 60;
+          const remainingSeconds = differenceInSeconds % 60;
+          let result = '';
+          if (differenceInDays > 0) {
+            result += differenceInDays + ' D ';
+          }
+          if (remainingHours > 0) {
+            result += remainingHours + ' H ';
+          }
+          if (remainingMinutes > 0) { 
+            result += remainingMinutes + ' M ';
+          }
+          result += remainingSeconds + ' S';
+          
+          $("#lastBlock").text(result);
           $("#connectedPeers").text(value.networkStats.connectedPeers);
           $("#minimumPayment").text(value.paymentProcessing.minimumPayment + " " + value.coin.type);
           $("#payoutScheme").text(value.paymentProcessing.payoutScheme);

@@ -24,12 +24,12 @@
 
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
   <link rel="stylesheet" href="css/bootstrap.css">
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/skins/skin-purple.css">
   <link rel="stylesheet" href="css/chartist.min.css">
   <link rel="stylesheet" href="css/font-awesome-all.css">
   <link rel="stylesheet" href="css/themify-icons.css">
-  <link rel="stylesheet" href="css/font-awesome-icons.css">
+  <!-- <link rel="stylesheet" href="css/font-awesome-icons.css"> -->
   <link rel="stylesheet" href="css/miningcore.css">
   <link rel="stylesheet" href="css/miningcore-colors.css">
   <link rel="stylesheet" href="css/bootstrap-toggle.css">
@@ -436,6 +436,17 @@ Apply one or more of the following classes to get the desired effect
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                   <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="fas fa-hammer"></i></span>
+                    <div class="info-box-content">
+                      <span class="info-box-text">pool effort</span>
+                      <span class="info-box-number">
+                        <div id="poolEffort"></div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                  <div class="info-box">
                     <span class="info-box-icon bg-yellow"><i class="fas fa-code-branch"></i></span>
                     <div class="info-box-content">
                       <span class="info-box-text">connected peers</span>
@@ -461,11 +472,44 @@ Apply one or more of the following classes to get the desired effect
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                   <div class="info-box">
+                    <span class="info-box-icon bg-blue"><i class="fas fa-cube"></i></span>
+                    <div class="info-box-content">
+                      <span class="info-box-text">Blocks mined</span>
+                      <span class="info-box-number">
+                        <div id="totalBlocks"></div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                  <div class="info-box">
                     <span class="info-box-icon bg-green"><i class="fas fa-chart-pie"></i></span>
                     <div class="info-box-content">
                       <span class="info-box-text">pool fee</span>
                       <span class="info-box-number">
                         <div id="poolFeePercent"></div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-yellow"><i class="fas fa-credit-card"></i></span>
+                    <div class="info-box-content">
+                      <span class="info-box-text">Payments done</span>
+                      <span class="info-box-number">
+                        <div id="paymentsDone"></div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-red"><i class="fas fa-clock"></i></span>
+                    <div class="info-box-content">
+                      <span class="info-box-text">Last block</span>
+                      <span class="info-box-number">
+                        <div id="lastBlock"></div>
                       </span>
                     </div>
                   </div>
@@ -503,14 +547,12 @@ Apply one or more of the following classes to get the desired effect
                     </div>
                     <div class="card-footer">
                       <div class="stats">
-
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
 
           <!-- POOL DASHBOARD PAGE -->
