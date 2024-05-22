@@ -50,6 +50,7 @@ if (is_IE) {
   
 $(document).ready(function () {
   $('.sidebar-toggle').on('click', function (e) {
+    $(".payment-threshold").hide();
     e.preventDefault();
     var opened = $("body").hasClass("sidebar-collapse");
     if (opened === true) {
@@ -488,6 +489,41 @@ function loadWallet() {
   var coin = window.location.hash.split(/[#/?]/)[1];
   var currentPage = window.location.hash.split(/[#/?]/)[2] || "stats";
   window.location.href = "#" + currentPool + "/" + currentPage + "?address=" + $("#walletAddress").val();
+  $(".payment-threshold").show();
+  
+}
+
+function updatePaymentThreshold() {
+  var paymentThreshold = $("#payment-treshold").val();
+  var walletAddress = $("#walletAddress").val();
+  console.log(paymentThreshold);
+  console.log(walletAddress);
+  if (!paymentThreshold || paymentThreshold <= 0) {
+    alert("Please enter a valid payment threshold.");
+    return;
+  }
+  $.get("https://api.ipify.org?format=json", function(data) {
+    var ipAddress = data.ip;
+    $.ajax({
+      url: API + "pools/" + currentPool + "/miners/" + walletAddress + "/settings",
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ 
+        Settings: {
+          PaymentThreshold: paymentThreshold 
+        },
+        IpAddress: ipAddress
+      }),
+      success: function(response) {
+        // Handle success response
+        alert("Payment threshold updated successfully.");
+      },
+      error: function(xhr, status, error) {
+        // Handle error response
+        alert("An error occurred: " + xhr.responseText);
+      }
+    });
+  });
 }
 
 

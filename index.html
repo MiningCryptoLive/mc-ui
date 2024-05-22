@@ -386,7 +386,6 @@ Apply one or more of the following classes to get the desired effect
               <h1>POOL & NETWORK<small>statistics</small></h1>
             </section>
             <div class="content container-fluid">
-
               <div class="row">
                 <div class="col-lg-6 col-md-12">
                   <div class="card card-chart">
@@ -401,7 +400,6 @@ Apply one or more of the following classes to get the desired effect
                     </div>
                     <div class="card-footer">
                       <div class="stats">
-
                       </div>
                     </div>
                   </div>
@@ -419,15 +417,12 @@ Apply one or more of the following classes to get the desired effect
                     </div>
                     <div class="card-footer">
                       <div class="stats">
-
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
               <div class="row">
-
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                   <div class="info-box">
                     <span class="info-box-icon bg-aqua"><i class="fas fa-bars"></i></span>
@@ -439,7 +434,6 @@ Apply one or more of the following classes to get the desired effect
                     </div>
                   </div>
                 </div>
-
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                   <div class="info-box">
                     <span class="info-box-icon bg-yellow"><i class="fas fa-code-branch"></i></span>
@@ -451,7 +445,6 @@ Apply one or more of the following classes to get the desired effect
                     </div>
                   </div>
                 </div>
-
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                   <div class="info-box">
                     <span class="info-box-icon bg-red"><i class="fas fa-trophy"></i></span>
@@ -466,7 +459,6 @@ Apply one or more of the following classes to get the desired effect
                     </div>
                   </div>
                 </div>
-
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                   <div class="info-box">
                     <span class="info-box-icon bg-green"><i class="fas fa-chart-pie"></i></span>
@@ -478,12 +470,7 @@ Apply one or more of the following classes to get the desired effect
                     </div>
                   </div>
                 </div>
-
               </div><!-- /.row -->
-
-
-
-
               <div class="row">
                 <div class="col-lg-6 col-md-12">
                   <div class="card card-chart">
@@ -532,9 +519,7 @@ Apply one or more of the following classes to get the desired effect
               <h1>MINER<small>dashboard</small></h1>
             </section>
             <div class="content container-fluid">
-
               <div class="row">
-
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="card">
                     <div class="card-header card-shadow bg-green">
@@ -546,7 +531,6 @@ Apply one or more of the following classes to get the desired effect
                         <div class="row">
                           <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="card-input input-group form-group bmd-form-group">
-
                               <input class="form-control" type="text" id="walletAddress" placeholder="Wallet Address">
                             </div>
                           </div>
@@ -558,11 +542,20 @@ Apply one or more of the following classes to get the desired effect
                     </div>
                   </div>
                 </div>
-
               </div>
-
               <div class="row">
-
+                <div class="payment-threshold col-lg-3 col-md-6 col-sm-6 col-xs-12" style="display: none;">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-red"><i class="fas fa-hand-holding-usd"></i></span>
+                    <div class="info-box-content">
+                      <span class="info-box-text">Payment threshold</span>
+                      <span class="info-box-number">
+                        <input id="payment-treshold" class="w-100" type="number" />
+                        <button type="submit" class="btn btn-primary w-100" onClick="updatePaymentThreshold(this.id)">Update</button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                   <div class="info-box">
                     <span class="info-box-icon bg-aqua"><i class="fas fa-receipt"></i></span>
