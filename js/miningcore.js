@@ -50,7 +50,6 @@ if (is_IE) {
   
 $(document).ready(function () {
   $('.sidebar-toggle').on('click', function (e) {
-    $(".payment-threshold").hide();
     e.preventDefault();
     var opened = $("body").hasClass("sidebar-collapse");
     if (opened === true) {
@@ -495,7 +494,6 @@ function loadWallet() {
     console.log(response);
     $("#payment-treshold").val(response.paymentThreshold)
   })
-  $(".payment-threshold").show();
   
 }
 
