@@ -583,8 +583,8 @@ div.card-chart {
 .card-header {
   margin-top:  -20px;
   margin-bottom: 0px;
-  margin-left:  15px;
-  margin-right: 15px;
+  margin-left:  -1px;
+  margin-right: -1px;
    
   border-radius: 3px;
 
@@ -860,11 +860,12 @@ div.card-chart {
 
 /* 
   ##Device = Low Resolution Tablets, Mobiles (Landscape)
-  ##Screen = B/w 481px to 767px
+  ##Screen = B/w 481px to 1015px
 */
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 1015px) {
 	.col-hide {display:none; }
 	.card-btn.col-hide {display:none; }
+	.id {display:none; }
 	.algo {display:none; }
 	.net-hash {display:none; }
 	.net-diff {display:none; }
@@ -940,6 +941,9 @@ div.card-chart {
   ##Screen = B/w  479px
 */
 @media (max-width: 480px) {
+	.card-btn {
+		width: calc(100% - 10px);
+	}
 	.content-header {
 		display: block;
 	}
@@ -1004,13 +1008,14 @@ div.card-chart {
 	Label the data
 	*/
 	#pool-coins td:nth-of-type(1):before { content: "Pool coin"; }
-	#pool-coins td:nth-of-type(2):before { content: "Algorithm"; }
-	#pool-coins td:nth-of-type(3):before { content: "Miners"; }
-	#pool-coins td:nth-of-type(4):before { content: "Pool Hashrate"; }
-	#pool-coins td:nth-of-type(5):before { content: "Fee"; }
-	#pool-coins td:nth-of-type(6):before { content: "Network Hashrate"; }
-	#pool-coins td:nth-of-type(7):before { content: "Network Difficulty"; }
-	#pool-coins td:nth-of-type(8):before { content: ""; }
+	#pool-coins td:nth-of-type(2):before { content: "Id"; }
+	#pool-coins td:nth-of-type(3):before { content: "Algorithm"; }
+	#pool-coins td:nth-of-type(4):before { content: "Miners"; }
+	#pool-coins td:nth-of-type(5):before { content: "Pool Hashrate"; }
+	#pool-coins td:nth-of-type(6):before { content: "Fee"; }
+	#pool-coins td:nth-of-type(7):before { content: "Network Hashrate"; }
+	#pool-coins td:nth-of-type(8):before { content: "Network Difficulty"; }
+	#pool-coins td:nth-of-type(9):before { content: ""; }
  
 	.sidebar-open .main-sidebar {
 		-webkit-transform:translate(0, 0);

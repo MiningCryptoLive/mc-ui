@@ -152,7 +152,6 @@ function loadIndex() {
   scrollPageTop();
 }
 
-
 // Load HOME page content
 function loadHomePage() {
   console.log('Loading home page content');
@@ -163,6 +162,56 @@ function loadHomePage() {
 
       var poolCoinTableTemplate = "";
       console.log(data);
+      // Sort the data
+      data.pools.sort((a, b) => {
+        let aValue, bValue;
+        let orderDirection = "desc";
+        let orderBy = "miners";
+        switch (orderBy) {
+          case 'coinName':
+            aValue = a.coin.name || a.coin.type;
+            bValue = b.coin.name || b.coin.type;
+            break;
+          case 'id':
+            aValue = a.id;
+            bValue = b.id;
+            break;
+          case 'algo':
+            aValue = a.coin.algorithm;
+            bValue = b.coin.algorithm;
+            break;
+          case 'miners':
+            aValue = a.poolStats ? a.poolStats.connectedMiners : 0;
+            bValue = b.poolStats ? b.poolStats.connectedMiners : 0;
+            break;
+          case 'poolHash':
+            aValue = a.poolStats ? a.poolStats.poolHashrate : 0;
+            bValue = b.poolStats ? b.poolStats.poolHashrate : 0;
+            break;
+          case 'fee':
+            aValue = a.poolFeePercent;
+            bValue = b.poolFeePercent;
+            break;
+          case 'netHash':
+            aValue = a.networkStats ? a.networkStats.networkHashrate : 0;
+            bValue = b.networkStats ? b.networkStats.networkHashrate : 0;
+            break;
+          case 'netDiff':
+            aValue = a.networkStats ? a.networkStats.networkDifficulty : 0;
+            bValue = b.networkStats ? b.networkStats.networkDifficulty : 0;
+            break;
+          default:
+            aValue = a.coin.name || a.coin.type;
+            bValue = b.coin.name || b.coin.type;
+        }
+        if (aValue < bValue) {
+          return orderDirection === 'asc' ? -1 : 1;
+        } else if (aValue > bValue) {
+          return orderDirection === 'asc' ? 1 : -1;
+        } else {
+          return 0;
+        }
+      });
 
       $.each(data.pools, function (index, value) {
 
@@ -172,7 +221,7 @@ function loadHomePage() {
 
         poolCoinTableTemplate += "<tr class='coin-table-row' href='#" + value.id + "'>";
         poolCoinTableTemplate += "<td class='coin'><a href='#" + value.id + "'<span>" + coinLogo + coinName + " (" + value.coin.type.toUpperCase() + ") </span></a></td>";
-        poolCoinTableTemplate += "<td class='coin'>" + value.id + "</td>";
+        poolCoinTableTemplate += "<td class='id'>" + value.id + "</td>";
         poolCoinTableTemplate += "<td class='algo'>" + value.coin.algorithm + "</td>";
         if(value.poolStats !== undefined) {
           poolCoinTableTemplate += "<td class='miners'>" + value.poolStats.connectedMiners+ "</td>";
