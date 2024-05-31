@@ -22,7 +22,7 @@
           <h4>ASIC Miner Configuration</h4>
           <p>To mine Kaspa with your ASIC miner, ensure it is configured with the following parameters:</p>
           <ul>
-              <li>POOL STRATUM ADDRESS AND PORT - <code>stratum+tcp://fr.kas.pool.hoosat.fi:42394</code></li>
+              <li>POOL STRATUM ADDRESS AND PORT - <code>stratum+tcp://fr.{{ stratumAddress }}</code></li>
               <li>YOUR_WALLET_ADDRESS - Your valid Kaspa wallet address</li>
               <li>PASSWORD - Use 'x' or leave it blank</li>
           </ul>
@@ -30,7 +30,7 @@
           <h4>Example ASIC Miner Configuration</h4>
           <p>Here's an example of how you can configure your ASIC miner for Kaspa mining:</p>
           <code>
-              cgminer -o stratum+tcp://fr.kas.pool.hoosat.fi:42394 -u YOUR_WALLET_ADDRESS -p x
+              cgminer -o stratum+tcp://fr.{{ stratumAddress }} -u YOUR_WALLET_ADDRESS -p x
           </code>
           <p>Please replace <code>YOUR_WALLET_ADDRESS</code> with your actual Kaspa wallet address.</p>
       </div>
