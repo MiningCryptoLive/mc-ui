@@ -45,46 +45,11 @@
         </code>
       </div>
       <h4 class="mt-4">Configuration Examples</h4>
-      <h5 class="mt-2">SRBMiner Configuration</h5>
-      <code> SRBMiner-MULTI.exe --algorithm heavyhash --pool stratum+tcp://fr.{{ stratumAddress }} --wallet YOUR_WALLET_ADDRESS --worker WORKERNAME --password x </code>
+      <h5 class="mt-2">TeamRedMiner Configuration</h5>
+      <p></p>
+      <code>./teamredminer -a kas -o stratum+tcp://fr.{{ stratumAddress }} -u btm:address.worker_name -p x</code>
       <h5 class="mt-2">HiveOS Configuration</h5>
       <p>For HiveOS, use the following configuration:</p>
-      <ol>
-        <li>Click the flight sheet JSON below</li>
-        <li>Go to Hive OS-farm (page that shows all workers)</li>
-        <li>Click on Flight Sheets tab</li>
-        <li>Click on Import from Clipboard</li>
-        <li>Create Flight Sheet and add wallet</li>
-        <li>Run flight sheet on workers!</li>
-      </ol>
-      <code>
-        {<br />
-        &emsp;"name": "Bitmeme",<br />
-        &emsp;&emsp;"isFavorite": true,<br />
-        &emsp;&emsp;"items": [<br />
-        &emsp;&emsp;{<br />
-        &emsp;&emsp;&emsp;"coin": "Bitmeme",<br />
-        &emsp;&emsp;&emsp;&emsp;"pool_ssl": false,<br />
-        &emsp;&emsp;&emsp;&emsp;"dpool_ssl": false,<br />
-        &emsp;&emsp;&emsp;&emsp;"miner": "lolminer",<br />
-        &emsp;&emsp;&emsp;&emsp;"miner_config": {<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;"algo": "Bitmeme",<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"template": "%WAL%.%WORKER_NAME%",<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"tls": "0",<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"server": "fr.{ stratumAddress }}",<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"port": "{{ port }}",<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"pass": "x"<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;},<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;"pool_geo": [<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"url": "fr.{ stratumAddress }}",<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"geo": "FR"<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;}<br />
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;]<br />
-        &emsp;&emsp;&emsp;&emsp;}<br />
-        &emsp;&emsp;]<br />
-        }<br />
-      </code>
     </div>
   </div>
 </div>
