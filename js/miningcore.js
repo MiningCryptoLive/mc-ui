@@ -1,55 +1,52 @@
 /*!
-  * Miningcore.js v1.02
-  * Copyright 2020 Authors (https://github.com/minernl/Miningcore)
-  */
+ * Miningcore.js v1.02
+ * Copyright 2020 Authors (https://github.com/minernl/Miningcore)
+ */
 
 // --------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------
 // Current running domain (or ip address) url will be read from the browser url bar.
-// You can check the result in you browser development view -> F12 -> Console 
+// You can check the result in you browser development view -> F12 -> Console
 // -->> !! no need to change anything below here !! <<--
 // --------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------
 
 // read WebURL from current browser
-var hostname = "pool.hoosat.fi"
-var WebURL = "https://" + hostname + "/";  // Website URL is:  https://domain.com/
+var hostname = "pool.hoosat.fi";
+var WebURL = "https://" + hostname + "/"; // Website URL is:  https://domain.com/
 // WebURL correction if not ends with /
 if (WebURL.substring(WebURL.length - 1) != "/") {
   WebURL = WebURL + "/";
-  console.log('Corrected WebURL, does not end with / -> New WebURL : ', WebURL);
+  console.log("Corrected WebURL, does not end with / -> New WebURL : ", WebURL);
 }
-var API = "https://fr.pool.hoosat.fi/api/";   						// API address is:  https://domain.com/api/
+var API = "https://fr.pool.hoosat.fi/api/"; // API address is:  https://domain.com/api/
 // API correction if not ends with /
 if (API.substring(API.length - 1) != "/") {
   API = API + "/";
-  console.log('Corrected API, does not end with / -> New API : ', API);
+  console.log("Corrected API, does not end with / -> New API : ", API);
 }
-var stratumAddress = hostname;           				// Stratum address is:  domain.com
-
+var stratumAddress = hostname; // Stratum address is:  domain.com
 
 // --------------------------------------------------------------------------------------------
 // no need to change anything below here
 // --------------------------------------------------------------------------------------------
-console.log('MiningCore.WebUI : ', WebURL);		                      // Returns website URL
-console.log('API address used : ', API);                                      // Returns API URL
-console.log('Stratum address  : ', "stratum+tcp://" + stratumAddress + ":");  // Returns Stratum URL
-console.log('Page Load        : ', window.location.href);                     // Returns full URL
+console.log("MiningCore.WebUI : ", WebURL); // Returns website URL
+console.log("API address used : ", API); // Returns API URL
+console.log("Stratum address  : ", "stratum+tcp://" + stratumAddress + ":"); // Returns Stratum URL
+console.log("Page Load        : ", window.location.href); // Returns full URL
 
-currentPage = "index"
+currentPage = "index";
 
 // check browser compatibility
 var nua = navigator.userAgent;
 //var is_android = ((nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1) && !(nua.indexOf('Chrome') > -1));
-var is_IE = ((nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Trident') > -1) && !(nua.indexOf('Chrome') > -1));
+var is_IE = nua.indexOf("Mozilla/5.0") > -1 && nua.indexOf("Trident") > -1 && !(nua.indexOf("Chrome") > -1);
 if (is_IE) {
-  console.log('Running in IE browser is not supported - ', nua);
+  console.log("Running in IE browser is not supported - ", nua);
 }
 
-
-  
 $(document).ready(function () {
-  $('.sidebar-toggle').on('click', function (e) {
+  $(".sidebar-toggle").on("click", function (e) {
     e.preventDefault();
     var opened = $("body").hasClass("sidebar-collapse");
     if (opened === true) {
@@ -81,9 +78,8 @@ function loadIndex() {
   currentAddress = hashList[3];
 
   if (currentPool && !currentPage) {
-    currentPage = "stats"
-  }
-  else if (!currentPool && !currentPage) {
+    currentPage = "stats";
+  } else if (!currentPool && !currentPage) {
     currentPage = "index";
   }
   if (currentPool && currentPage) {
@@ -105,41 +101,41 @@ function loadIndex() {
 
     switch (currentPage) {
       case "stats":
-        console.log('Loading stats page content');
+        console.log("Loading stats page content");
         $(".nav-stats").addClass("active");
         loadStatsPage();
         break;
       case "dashboard":
-        console.log('Loading dashboard page content');
+        console.log("Loading dashboard page content");
         $(".nav-dashboard").addClass("active");
         loadDashboardPage();
         break;
       case "miners":
-        console.log('Loading miners page content');
+        console.log("Loading miners page content");
         $(".nav-miners").addClass("active");
         loadMinersPage();
         break;
       case "blocks":
-        console.log('Loading blocks page content');
+        console.log("Loading blocks page content");
         $(".nav-blocks").addClass("active");
         loadBlocksPage();
         break;
       case "payments":
-        console.log('Loading payments page content');
+        console.log("Loading payments page content");
         $(".nav-payments").addClass("active");
         loadPaymentsPage();
         break;
       case "connect":
-        console.log('Loading connect page content');
+        console.log("Loading connect page content");
         $(".nav-connect").addClass("active");
         loadConnectPage();
         break;
       case "faq":
-        console.log('Loading faq page content');
+        console.log("Loading faq page content");
         $(".nav-faq").addClass("active");
         break;
       case "support":
-        console.log('Loading support page content');
+        console.log("Loading support page content");
         $(".nav-support").addClass("active");
         break;
       default:
@@ -154,7 +150,7 @@ function loadIndex() {
 
 // Load HOME page content
 function loadHomePage() {
-  console.log('Loading home page content');
+  console.log("Loading home page content");
   return $.ajax(API + "pools")
     .done(function (data) {
       const poolCoinCardTemplate = $(".index-coin-card-template").html();
@@ -168,35 +164,35 @@ function loadHomePage() {
         let orderDirection = "desc";
         let orderBy = "miners";
         switch (orderBy) {
-          case 'coinName':
+          case "coinName":
             aValue = a.coin.name || a.coin.type;
             bValue = b.coin.name || b.coin.type;
             break;
-          case 'id':
+          case "id":
             aValue = a.id;
             bValue = b.id;
             break;
-          case 'algo':
+          case "algo":
             aValue = a.coin.algorithm;
             bValue = b.coin.algorithm;
             break;
-          case 'miners':
+          case "miners":
             aValue = a.poolStats ? a.poolStats.connectedMiners : 0;
             bValue = b.poolStats ? b.poolStats.connectedMiners : 0;
             break;
-          case 'poolHash':
+          case "poolHash":
             aValue = a.poolStats ? a.poolStats.poolHashrate : 0;
             bValue = b.poolStats ? b.poolStats.poolHashrate : 0;
             break;
-          case 'fee':
+          case "fee":
             aValue = a.poolFeePercent;
             bValue = b.poolFeePercent;
             break;
-          case 'netHash':
+          case "netHash":
             aValue = a.networkStats ? a.networkStats.networkHashrate : 0;
             bValue = b.networkStats ? b.networkStats.networkHashrate : 0;
             break;
-          case 'netDiff':
+          case "netDiff":
             aValue = a.networkStats ? a.networkStats.networkDifficulty : 0;
             bValue = b.networkStats ? b.networkStats.networkDifficulty : 0;
             break;
@@ -205,26 +201,27 @@ function loadHomePage() {
             bValue = b.coin.name || b.coin.type;
         }
         if (aValue < bValue) {
-          return orderDirection === 'asc' ? -1 : 1;
+          return orderDirection === "asc" ? -1 : 1;
         } else if (aValue > bValue) {
-          return orderDirection === 'asc' ? 1 : -1;
+          return orderDirection === "asc" ? 1 : -1;
         } else {
           return 0;
         }
       });
 
       $.each(data.pools, function (index, value) {
-
         var coinLogo = "<img class='coinimg' src='img/coin/icon/" + value.coin.type.toLowerCase() + ".png' />";
         var coinName = value.coin.name;
-        if (typeof coinName === "undefined" || coinName === null) { coinName = value.coin.type; }
+        if (typeof coinName === "undefined" || coinName === null) {
+          coinName = value.coin.type;
+        }
 
         poolCoinTableTemplate += "<tr class='coin-table-row' href='#" + value.id + "'>";
         poolCoinTableTemplate += "<td class='coin'><a href='#" + value.id + "'<span>" + coinLogo + coinName + " (" + value.coin.type.toUpperCase() + ") </span></a></td>";
         poolCoinTableTemplate += "<td class='id'>" + value.id + "</td>";
         poolCoinTableTemplate += "<td class='algo'>" + value.coin.algorithm + "</td>";
-        if(value.poolStats !== undefined) {
-          poolCoinTableTemplate += "<td class='miners'>" + value.poolStats.connectedMiners+ "</td>";
+        if (value.poolStats !== undefined) {
+          poolCoinTableTemplate += "<td class='miners'>" + value.poolStats.connectedMiners + "</td>";
           poolCoinTableTemplate += "<td class='pool-hash'>" + _formatter(value.poolStats.poolHashrate, 5, "H/s") + "</td>";
         } else {
           poolCoinTableTemplate += "<td class='miners'></td>";
@@ -232,7 +229,7 @@ function loadHomePage() {
         }
         poolCoinTableTemplate += "<td class='fee'>" + value.poolFeePercent + " %</td>";
 
-        if(value.networkStats !== undefined) {
+        if (value.networkStats !== undefined) {
           poolCoinTableTemplate += "<td class='net-hash'>" + _formatter(value.networkStats.networkHashrate, 5, "H/s") + "</td>";
           poolCoinTableTemplate += "<td class='net-diff'>" + _formatter(value.networkStats.networkDifficulty, 5, "") + "</td>";
         } else {
@@ -248,7 +245,7 @@ function loadHomePage() {
       //}
 
       $(document).ready(function () {
-        $('#pool-coins tr').click(function () {
+        $("#pool-coins tr").click(function () {
           var href = $(this).find("a").attr("href");
           if (href) {
             window.location = href;
@@ -260,19 +257,17 @@ function loadHomePage() {
       var poolCoinTableTemplate = "";
 
       poolCoinTableTemplate += "<tr><td colspan='8'> ";
-      poolCoinTableTemplate += "<div class='alert alert-warning'>"
+      poolCoinTableTemplate += "<div class='alert alert-warning'>";
       poolCoinTableTemplate += "	<h4><i class='fas fa-exclamation-triangle'></i> Warning!</h4>";
       poolCoinTableTemplate += "	<hr>";
       poolCoinTableTemplate += "	<p>The pool is currently down for maintenance.</p>";
       poolCoinTableTemplate += "	<p>Please try again later.</p>";
-      poolCoinTableTemplate += "</div>"
+      poolCoinTableTemplate += "</div>";
       poolCoinTableTemplate += "</td></tr>";
 
       $(".pool-coin-table").html(poolCoinTableTemplate);
-
     });
 }
-
 
 // Load STATS page content
 function loadStatsPage() {
@@ -292,7 +287,6 @@ function loadStatsPage() {
     600000
   );
 }
-
 
 // Load DASHBOARD page content
 function loadDashboardPage() {
@@ -322,7 +316,6 @@ function loadDashboardPage() {
   }
 }
 
-
 // Load MINERS page content
 function loadMinersPage() {
   return $.ajax(API + "pools/" + currentPool + "/miners?page=0&pagesize=20")
@@ -332,7 +325,7 @@ function loadMinersPage() {
         $.each(data, function (index, value) {
           minerList += "<tr>";
           //minerList +=   "<td>" + value.miner + "</td>";
-          minerList += '<td>' + value.miner.substring(0, 12) + ' &hellip; ' + value.miner.substring(value.miner.length - 12) + '</td>';
+          minerList += "<td>" + value.miner.substring(0, 12) + " &hellip; " + value.miner.substring(value.miner.length - 12) + "</td>";
           //minerList += '<td><a href="' + value.minerAddressInfoLink + '" target="_blank">' + value.miner.substring(0, 12) + ' &hellip; ' + value.miner.substring(value.miner.length - 12) + '</td>';
           minerList += "<td>" + _formatter(value.hashrate, 5, "H/s") + "</td>";
           minerList += "<td>" + _formatter(value.sharesPerSecond, 5, "S/s") + "</td>";
@@ -346,16 +339,15 @@ function loadMinersPage() {
     .fail(function () {
       $.notify(
         {
-          message: "Error: No response from API.<br>(loadMinersList)"
+          message: "Error: No response from API.<br>(loadMinersList)",
         },
         {
           type: "danger",
-          timer: 3000
+          timer: 3000,
         }
       );
     });
 }
-
 
 // Load BLOCKS page content
 function loadBlocksPage() {
@@ -365,7 +357,7 @@ function loadBlocksPage() {
       if (data.length > 0) {
         $.each(data, function (index, value) {
           var createDate = convertLocalDateToUTCDate(new Date(value.created), false);
-          var effort = parseFloat(value.effort* 1e12).toFixed(2);
+          var effort = parseFloat(value.effort * 1e12).toFixed(2);
           var effortClass = "";
           if (effort < 30) {
             effortClass = "effort1";
@@ -389,7 +381,8 @@ function loadBlocksPage() {
           var status = value.status;
           blockList += "<td>" + status + "</td>";
           blockList += "<td>" + _formatter(value.reward, 5, "") + "</td>";
-          blockList += "<td><div class='c100 small p" + Math.round(value.confirmationProgress * 100) + "'><span>" + Math.round(value.confirmationProgress * 100) + "%</span><div class='slice'><div class='bar'></div><div class='fill'></div></div></div></td>";
+          blockList +=
+            "<td><div class='c100 small p" + Math.round(value.confirmationProgress * 100) + "'><span>" + Math.round(value.confirmationProgress * 100) + "%</span><div class='slice'><div class='bar'></div><div class='fill'></div></div></div></td>";
           blockList += "</tr>";
         });
       } else {
@@ -401,11 +394,11 @@ function loadBlocksPage() {
     .fail(function () {
       $.notify(
         {
-          message: "Error: No response from API.<br>(loadBlocksList)"
+          message: "Error: No response from API.<br>(loadBlocksList)",
         },
         {
           type: "danger",
-          timer: 3000
+          timer: 3000,
         }
       );
     });
@@ -419,12 +412,19 @@ function loadPaymentsPage() {
       if (data.length > 0) {
         $.each(data, function (index, value) {
           var createDate = convertLocalDateToUTCDate(new Date(value.created), false);
-          paymentList += '<tr>';
+          paymentList += "<tr>";
           paymentList += "<td>" + createDate + "</td>";
-          paymentList += '<td><a href="' + value.addressInfoLink + '" target="_blank">' + value.address.substring(0, 12) + ' &hellip; ' + value.address.substring(value.address.length - 12) + '</td>';
-          paymentList += '<td>' + _formatter(value.amount, 5, '') + '</td>';
-          paymentList += '<td colspan="2"><a href="' + value.transactionInfoLink + '" target="_blank">' + value.transactionConfirmationData.substring(0, 16) + ' &hellip; ' + value.transactionConfirmationData.substring(value.transactionConfirmationData.length - 16) + ' </a></td>';
-          paymentList += '</tr>';
+          paymentList += '<td><a href="' + value.addressInfoLink + '" target="_blank">' + value.address.substring(0, 12) + " &hellip; " + value.address.substring(value.address.length - 12) + "</td>";
+          paymentList += "<td>" + _formatter(value.amount, 5, "") + "</td>";
+          paymentList +=
+            '<td colspan="2"><a href="' +
+            value.transactionInfoLink +
+            '" target="_blank">' +
+            value.transactionConfirmationData.substring(0, 16) +
+            " &hellip; " +
+            value.transactionConfirmationData.substring(value.transactionConfirmationData.length - 16) +
+            " </a></td>";
+          paymentList += "</tr>";
         });
       } else {
         paymentList += '<tr><td colspan="4">No payments found yet</td></tr>';
@@ -434,11 +434,11 @@ function loadPaymentsPage() {
     .fail(function () {
       $.notify(
         {
-          message: "Error: No response from API.<br>(loadPaymentsList)"
+          message: "Error: No response from API.<br>(loadPaymentsList)",
         },
         {
           type: "danger",
-          timer: 3000
+          timer: 3000,
         }
       );
     });
@@ -451,7 +451,6 @@ function loadConnectPage() {
       var connectPoolConfig = "";
       $.each(data.pools, function (index, value) {
         if (currentPool === value.id) {
-
           defaultPort = Object.keys(value.ports)[0];
           coinName = value.coin.name;
           coinType = value.coin.type.toLowerCase();
@@ -482,56 +481,50 @@ function loadConnectPage() {
             }
             connectPoolConfig += "</td></tr>";
           });
-
         }
       });
       connectPoolConfig += "</tbody>";
       $("#connectPoolConfig").html(connectPoolConfig);
 
-      // Connect Miner config 
+      // Connect Miner config
       $("#miner-config").html("");
-      $("#miner-config").load("poolconfig/" + coinType + ".html",
-        function (response, status, xhr) {
-          if (status == "error") {
-            $("#miner-config").load("poolconfig/default.html",
-              function (responseText) {
-                var config = $("#miner-config")
-                  .html()
-                  .replace(/{{ stratumAddress }}/g, coinType + "." + stratumAddress + ":" + defaultPort)
-                  .replace(/{{ coinName }}/g, coinName)
-                  .replace(/{{ aglorithm }}/g, algorithm);
-                $(this).html(config);
-              }
-            );
-          } else {
+      $("#miner-config").load("poolconfig/" + coinType + ".html", function (response, status, xhr) {
+        if (status == "error") {
+          $("#miner-config").load("poolconfig/default.html", function (responseText) {
             var config = $("#miner-config")
               .html()
               .replace(/{{ stratumAddress }}/g, coinType + "." + stratumAddress + ":" + defaultPort)
               .replace(/{{ coinName }}/g, coinName)
-              .replace(/{{ aglorithm }}/g, algorithm)
-              .replace(/{{ port }}/g, defaultPort);
+              .replace(/{{ aglorithm }}/g, algorithm);
             $(this).html(config);
-          }
+          });
+        } else {
+          var config = $("#miner-config")
+            .html()
+            .replace(/{{ stratumAddress }}/g, coinType + "." + stratumAddress + ":" + defaultPort)
+            .replace(/{{ coinName }}/g, coinName)
+            .replace(/{{ aglorithm }}/g, algorithm)
+            .replace(/{{ port }}/g, defaultPort);
+          $(this).html(config);
         }
-      );
+      });
     })
     .fail(function () {
       $.notify(
         {
-          message: "Error: No response from API.<br>(loadConnectConfig)"
+          message: "Error: No response from API.<br>(loadConnectConfig)",
         },
         {
           type: "danger",
-          timer: 3000
+          timer: 3000,
         }
       );
     });
 }
 
-
 // Dashboard - load wallet stats
 function loadWallet() {
-  console.log('Loading wallet address:', $("#walletAddress").val());
+  console.log("Loading wallet address:", $("#walletAddress").val());
   var walletAddress = "";
   if ($("#walletAddress").val().length > 0) {
     walletAddress = $("#walletAddress").val();
@@ -540,44 +533,43 @@ function loadWallet() {
   var coin = window.location.hash.split(/[#/?]/)[1];
   var currentPage = window.location.hash.split(/[#/?]/)[2] || "stats";
   window.location.href = "#" + currentPool + "/" + currentPage + "?address=" + walletAddress;
-  $.get(API + "pools/" + currentPool + "/miners/" + walletAddress + "/settings", (response) => {
-    console.log(response);
-    $("#payment-treshold").val(response.paymentThreshold)
-  })
-  
+  $.get(API + "pools/" + currentPool + "/miners/" + walletAddress + "/settings", (settingsResponse) => {
+    console.log(settingsResponse);
+    $.get("https://api.ipify.org?format=json", function (ipifyResponse) {
+      $("#ip-address").val(ipifyResponse.ip);
+      $("#payment-threshold").val(settingsResponse.paymentThreshold);
+    });
+  });
 }
 
 function updatePaymentThreshold() {
-  var paymentThreshold = $("#payment-treshold").val();
+  var paymentThreshold = $("#payment-threshold").val();
+  var ipAddress = $("#ip-address").val();
   var walletAddress = $("#walletAddress").val();
   if (!paymentThreshold || paymentThreshold <= 0) {
     alert("Please enter a valid payment threshold.");
     return;
   }
-  $.get("https://api.ipify.org?format=json", function(response) {
-    var ipAddress = response.ip;
-    $.ajax({
-      url: API + "pools/" + currentPool + "/miners/" + walletAddress + "/settings",
-      type: "POST",
-      contentType: "application/json",
-      data: JSON.stringify({ 
-        Settings: {
-          PaymentThreshold: paymentThreshold 
-        },
-        IpAddress: ipAddress
-      }),
-      success: function(response) {
-        // Handle success response
-        alert("Payment threshold updated successfully.");
+  $.ajax({
+    url: API + "pools/" + currentPool + "/miners/" + walletAddress + "/settings",
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify({
+      Settings: {
+        PaymentThreshold: paymentThreshold,
       },
-      error: function(xhr, status, error) {
-        // Handle error response
-        alert("An error occurred: " + xhr.responseText);
-      }
-    });
+      IpAddress: ipAddress,
+    }),
+    success: function (response) {
+      // Handle success response
+      alert("Payment threshold updated successfully.");
+    },
+    error: function (xhr, status, error) {
+      // Handle error response
+      alert("An error occurred: " + xhr.responseText);
+    },
   });
 }
-
 
 // General formatter function
 function _formatter(value, decimal, unit) {
@@ -593,17 +585,16 @@ function _formatter(value, decimal, unit) {
       { value: 1e15, symbol: "P" },
       { value: 1e18, symbol: "E" },
       { value: 1e21, symbol: "Z" },
-      { value: 1e24, symbol: "Y" }
+      { value: 1e24, symbol: "Y" },
     ];
     for (var i = si.length - 1; i > 0; i--) {
       if (value >= si[i].value) {
         break;
       }
     }
-    return ((value / si[i].value).toFixed(decimal).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, "$1") + " " + si[i].symbol + unit);
+    return (value / si[i].value).toFixed(decimal).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, "$1") + " " + si[i].symbol + unit;
   }
 }
-
 
 // Time convert Local -> UTC
 function convertLocalDateToUTCDate(date, toUTC) {
@@ -620,7 +611,6 @@ function convertLocalDateToUTCDate(date, toUTC) {
   return newDate;
 }
 
-
 // Time convert UTC -> Local
 function convertUTCDateToLocalDate(date) {
   var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
@@ -630,7 +620,6 @@ function convertUTCDateToLocalDate(date) {
   return newDate;
 }
 
-
 // Scroll to top off page
 function scrollPageTop() {
   document.body.scrollTop = 0;
@@ -639,11 +628,10 @@ function scrollPageTop() {
   elmnt.scrollIntoView();
 }
 
-
 // Check if file exits
 function doesFileExist(urlToFile) {
   var xhr = new XMLHttpRequest();
-  xhr.open('HEAD', urlToFile, false);
+  xhr.open("HEAD", urlToFile, false);
   xhr.send();
 
   if (xhr.status == "404") {
@@ -652,7 +640,6 @@ function doesFileExist(urlToFile) {
     return true;
   }
 }
-
 
 // STATS page data
 function loadStatsData() {
@@ -665,9 +652,9 @@ function loadStatsData() {
           $("#blockchainHeight").text(value.networkStats.blockHeight);
           $("#poolEffort").text(parseFloat(value.poolEffort * 1e12).toFixed(2) + "%");
           $("#totalBlocks").text(value.totalBlocks);
-          if(value.totalPaid > 1000000) {
+          if (value.totalPaid > 1000000) {
             $("#paymentsDone").text(parseFloat(value.totalPaid / 1000).toFixed(2) + " M " + value.coin.symbol);
-          } else if(value.totalPaid > 1000) {
+          } else if (value.totalPaid > 1000) {
             $("#paymentsDone").text(parseFloat(value.totalPaid / 1000).toFixed(2) + " K " + value.coin.symbol);
           } else {
             $("#paymentsDone").text(parseFloat(value.totalPaid).toFixed(2) + " " + value.coin.symbol);
@@ -683,18 +670,18 @@ function loadStatsData() {
           const remainingHours = differenceInHours % 24;
           const remainingMinutes = differenceInMinutes % 60;
           const remainingSeconds = differenceInSeconds % 60;
-          let result = '';
+          let result = "";
           if (differenceInDays > 0) {
-            result += differenceInDays + ' D ';
+            result += differenceInDays + " D ";
           }
           if (remainingHours > 0) {
-            result += remainingHours + ' H ';
+            result += remainingHours + " H ";
           }
-          if (remainingMinutes > 0) { 
-            result += remainingMinutes + ' M ';
+          if (remainingMinutes > 0) {
+            result += remainingMinutes + " M ";
           }
-          result += remainingSeconds + ' S';
-          
+          result += remainingSeconds + " S";
+
           $("#lastBlock").text(result);
           $("#connectedPeers").text(value.networkStats.connectedPeers);
           $("#minimumPayment").text(value.paymentProcessing.minimumPayment + " " + value.coin.type);
@@ -712,16 +699,15 @@ function loadStatsData() {
     .fail(function () {
       $.notify(
         {
-          message: "Error: No response from API.<br>(loadStatsData)"
+          message: "Error: No response from API.<br>(loadStatsData)",
         },
         {
           type: "danger",
-          timer: 3000
+          timer: 3000,
         }
       );
     });
 }
-
 
 // STATS page charts
 function loadStatsChart() {
@@ -761,18 +747,18 @@ function loadStatsChart() {
         seriesBarDistance: 1,
         // low:Math.min.apply(null,networkHashRate)/1.1,
         axisX: {
-          showGrid: false
+          showGrid: false,
         },
         axisY: {
           offset: 47,
           scale: "logcc",
           labelInterpolationFnc: function (value) {
             return _formatter(value, 1, "");
-          }
+          },
         },
         lineSmooth: Chartist.Interpolation.simple({
-          divisor: 2
-        })
+          divisor: 2,
+        }),
       };
 
       var responsiveOptions = [
@@ -782,30 +768,28 @@ function loadStatsChart() {
             axisX: {
               labelInterpolationFnc: function (value) {
                 return value[1];
-              }
-            }
-          }
-        ]
+              },
+            },
+          },
+        ],
       ];
       Chartist.Line("#chartStatsHashRate", dataNetworkHash, options, responsiveOptions);
       Chartist.Line("#chartStatsHashRatePool", dataPoolHash, options, responsiveOptions);
       Chartist.Line("#chartStatsDiff", dataNetworkDifficulty, options, responsiveOptions);
       Chartist.Line("#chartStatsMiners", dataMiners, options, responsiveOptions);
-
     })
     .fail(function () {
       $.notify(
         {
-          message: "Error: No response from API.<br>(loadStatsChart)"
+          message: "Error: No response from API.<br>(loadStatsChart)",
         },
         {
           type: "danger",
-          timer: 3000
+          timer: 3000,
         }
       );
     });
 }
-
 
 // DASHBOARD page data
 function loadDashboardData(walletAddress) {
@@ -821,22 +805,20 @@ function loadDashboardData(walletAddress) {
       $("#minerHashRate").text(_formatter(workerHashRate, 5, "H/s"));
       $("#pendingBalance").text(_formatter(data.pendingBalance, 5, ""));
       $("#paidBalance").text(_formatter(data.todayPaid, 5, ""));
-      $("#lifetimeBalance").text(_formatter(data.pendingBalance + data.totalPaid, 5, "")
-      );
+      $("#lifetimeBalance").text(_formatter(data.pendingBalance + data.totalPaid, 5, ""));
     })
     .fail(function () {
       $.notify(
         {
-          message: "Error: No response from API.<br>(loadDashboardData)"
+          message: "Error: No response from API.<br>(loadDashboardData)",
         },
         {
           type: "danger",
-          timer: 3000
+          timer: 3000,
         }
       );
     });
 }
-
 
 // DASHBOARD page Miner table
 function loadDashboardWorkerList(walletAddress) {
@@ -855,8 +837,7 @@ function loadDashboardWorkerList(walletAddress) {
             workerList += "<td>" + index + "</td>";
           }
           workerList += "<td>" + _formatter(value.hashrate, 5, "H/s") + "</td>";
-          workerList +=
-            "<td>" + _formatter(value.sharesPerSecond, 5, "S/s") + "</td>";
+          workerList += "<td>" + _formatter(value.sharesPerSecond, 5, "S/s") + "</td>";
           workerList += "</tr>";
         });
       } else {
@@ -868,37 +849,34 @@ function loadDashboardWorkerList(walletAddress) {
     .fail(function () {
       $.notify(
         {
-          message: "Error: No response from API.<br>(loadDashboardWorkerList)"
+          message: "Error: No response from API.<br>(loadDashboardWorkerList)",
         },
         {
           type: "danger",
-          timer: 3000
+          timer: 3000,
         }
       );
     });
 }
 
-
 // DASHBOARD page chart
 function loadDashboardChart(walletAddress) {
   return $.ajax(API + "pools/" + currentPool + "/miners/" + walletAddress + "/performance")
     .done(function (data) {
-
       labels = [];
       minerHashRate = [];
 
       $.each(data, function (index, value) {
         if (labels.length === 0 || (labels.length + 1) % 4 === 1) {
-          var createDate = convertLocalDateToUTCDate(
-            new Date(value.created),
-            false
-          );
+          var createDate = convertLocalDateToUTCDate(new Date(value.created), false);
           labels.push(createDate.getHours() + ":00");
         } else {
           labels.push("");
         }
         var workerHashRate = 0;
-        $.each(value.workers, function (index2, value2) { workerHashRate += value2.hashrate; });
+        $.each(value.workers, function (index2, value2) {
+          workerHashRate += value2.hashrate;
+        });
         minerHashRate.push(workerHashRate);
       });
       var data = { labels: labels, series: [minerHashRate] };
@@ -907,17 +885,17 @@ function loadDashboardChart(walletAddress) {
         showArea: true,
         seriesBarDistance: 1,
         axisX: {
-          showGrid: false
+          showGrid: false,
         },
         axisY: {
           offset: 47,
           labelInterpolationFnc: function (value) {
             return _formatter(value, 1, "");
-          }
+          },
         },
         lineSmooth: Chartist.Interpolation.simple({
-          divisor: 2
-        })
+          divisor: 2,
+        }),
       };
       var responsiveOptions = [
         [
@@ -926,27 +904,25 @@ function loadDashboardChart(walletAddress) {
             axisX: {
               labelInterpolationFnc: function (value) {
                 return value[0];
-              }
-            }
-          }
-        ]
+              },
+            },
+          },
+        ],
       ];
       Chartist.Line("#chartDashboardHashRate", data, options, responsiveOptions);
-
     })
     .fail(function () {
       $.notify(
         {
-          message: "Error: No response from API.<br>(loadDashboardChart)"
+          message: "Error: No response from API.<br>(loadDashboardChart)",
         },
         {
           type: "danger",
-          timer: 3000
+          timer: 3000,
         }
       );
     });
 }
-
 
 // Generate Coin based sidebar
 function loadNavigation() {
@@ -957,7 +933,7 @@ function loadNavigation() {
       var poolList = "<ul class='navbar-nav '>";
       $.each(data.pools, function (index, value) {
         poolList += "<li class='nav-item'>";
-        poolList += "  <a href='#" + value.id.toLowerCase() + "' class='nav-link coin-header" + (currentPool == value.id.toLowerCase() ? " coin-header-active" : "") + "'>"
+        poolList += "  <a href='#" + value.id.toLowerCase() + "' class='nav-link coin-header" + (currentPool == value.id.toLowerCase() ? " coin-header-active" : "") + "'>";
         poolList += "  <img  src='img/coin/icon/" + value.coin.type.toLowerCase() + ".png' /> " + value.coin.type;
         poolList += "  </a>";
         poolList += "</li>";
@@ -980,7 +956,7 @@ function loadNavigation() {
       sidebarList += sidebarTemplate
         .replace(/{{ coinId }}/g, currentPool)
         .replace(/{{ coinLogo }}/g, coinLogo)
-        .replace(/{{ coinName }}/g, coinName)
+        .replace(/{{ coinName }}/g, coinName);
       $(".sidebar-wrapper").html(sidebarList);
 
       $("a.link").each(function () {
@@ -988,18 +964,16 @@ function loadNavigation() {
           this.href = "#" + currentPool + "/dashboard?address=" + localStorage[currentPool + "-walletAddress"];
         }
       });
-
     })
     .fail(function () {
       $.notify(
         {
-          message: "Error: No response from API.<br>(loadNavigation)"
+          message: "Error: No response from API.<br>(loadNavigation)",
         },
         {
           type: "danger",
-          timer: 3000
+          timer: 3000,
         }
       );
     });
 }
-
