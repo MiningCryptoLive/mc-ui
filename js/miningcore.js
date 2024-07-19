@@ -652,8 +652,10 @@ function loadStatsData() {
           $("#blockchainHeight").text(value.networkStats.blockHeight);
           $("#poolEffort").text(parseFloat(value.poolEffort * 1e12).toFixed(2) + "%");
           $("#totalBlocks").text(value.totalBlocks);
-          if (value.totalPaid > 1000000) {
-            $("#paymentsDone").text(parseFloat(value.totalPaid / 1000).toFixed(2) + " M " + value.coin.symbol);
+          if (value.totalPaid > 1000000000) {
+            $("#paymentsDone").text(parseFloat(value.totalPaid / 1000000000).toFixed(2) + " B " + value.coin.symbol);
+          } else if (value.totalPaid > 1000000) {
+            $("#paymentsDone").text(parseFloat(value.totalPaid / 1000000).toFixed(2) + " M " + value.coin.symbol);
           } else if (value.totalPaid > 1000) {
             $("#paymentsDone").text(parseFloat(value.totalPaid / 1000).toFixed(2) + " K " + value.coin.symbol);
           } else {
