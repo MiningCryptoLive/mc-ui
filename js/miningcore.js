@@ -12,7 +12,11 @@
 // --------------------------------------------------------------------------------------------
 
 // read WebURL from current browser
-var hostname = "pool.hoosat.fi";
+var currentURL = window.location.href;
+// Create a URL object
+var url = new URL(currentURL);
+// Extract the hostname
+var hostname = url.hostname;
 var WebURL = "https://" + hostname + "/"; // Website URL is:  https://domain.com/
 // WebURL correction if not ends with /
 if (WebURL.substring(WebURL.length - 1) != "/") {
