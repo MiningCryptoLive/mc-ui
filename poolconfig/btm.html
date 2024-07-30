@@ -26,7 +26,7 @@
       <ul>
         <li>
           POOL STRATUM ADDRESS AND PORT -
-          <code>stratum+tcp://fr.{{ stratumAddress }}</code>
+          <code>stratum+tcp://{{ stratumAddress }}</code>
         </li>
         <li>YOUR_WALLET_ADDRESS - Your valid Bitmeme wallet address</li>
         <li>WORKERNAME - An optional workername to identify the miner or RIG</li>
@@ -47,7 +47,7 @@
       <h4 class="mt-4">Configuration Examples</h4>
       <h5 class="mt-2">TeamRedMiner Configuration</h5>
       <p></p>
-      <code>./teamredminer -a kas -o stratum+tcp://fr.{{ stratumAddress }} -u btm:address.worker_name -p x</code>
+      <code>./teamredminer -a kas -o stratum+tcp://{{ stratumAddress }} -u btm:address.worker_name -p x</code>
       <h5 class="mt-2">HiveOS Configuration</h5>
       <p>For HiveOS, use the following configuration:</p>
     </div>

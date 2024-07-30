@@ -21,7 +21,7 @@
       <p>To mine at this pool, you can use any miner supporting the etchash algorithm or Kobradag coin. Simply search for "Kobradag miner software" using a search engine, download the miner software, and configure your crypto miner accordingly.</p>
       <p><strong>Configuration Parameters:</strong></p>
       <ul>
-        <li>POOL STRATUM ADDRESS AND PORT - <code>stratum+tcp://fr.{{ stratumAddress }}</code></li>
+        <li>POOL STRATUM ADDRESS AND PORT - <code>stratum+tcp://{{ stratumAddress }}</code></li>
         <li>YOUR_WALLET_ADDRESS - Your valid Kobradag wallet address</li>
         <li>WORKERNAME - An optional workername to identify the miner or RIG</li>
         <li>PASSWORD - Use 'x' or leave it blank</li>
@@ -40,9 +40,9 @@
       </div>
       <h4 class="mt-4">Configuration Examples</h4>
       <h5 class="mt-2">lolMiner Configuration</h5>
-      <code> lolMiner.exe --algo PYRIN --pool stratum+tcp://fr.{{ stratumAddress }} --user YOUR_WALLET_ADDRESS.WORKERNAME --pass x </code>
+      <code> lolMiner.exe --algo PYRIN --pool stratum+tcp://{{ stratumAddress }} --user YOUR_WALLET_ADDRESS.WORKERNAME --pass x </code>
       <h5 class="mt-2">SRBMiner Configuration</h5>
-      <code> SRBMiner-MULTI.exe --algorithm PYRIN --pool stratum+tcp://fr.{{ stratumAddress }} --wallet YOUR_WALLET_ADDRESS --worker WORKERNAME --password x </code>
+      <code> SRBMiner-MULTI.exe --algorithm PYRIN --pool stratum+tcp://{{ stratumAddress }} --wallet YOUR_WALLET_ADDRESS --worker WORKERNAME --password x </code>
       <h5 class="mt-2">HiveOS Configuration</h5>
       <p>For HiveOS, use the following configuration:</p>
       <ol>
