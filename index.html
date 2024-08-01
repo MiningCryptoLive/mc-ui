@@ -20,7 +20,7 @@
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/skins/skin-blue.css">
+  <link rel="stylesheet" href="css/skins/skin-purple.css">
   <link rel="stylesheet" href="css/chartist.min.css">
   <link rel="stylesheet" href="css/font-awesome-all.css">
   <link rel="stylesheet" href="css/themify-icons.css">
@@ -57,7 +57,7 @@ Apply one or more of the following classes to get the desired effect
 ===========================================================
 -->
 
-<body class="skin-blue" style="height: auto; min-height: 100%;" onhashchange="loadIndex()">
+<body class="skin-purple" style="height: auto; min-height: 100%;" onhashchange="loadIndex()">
 
 
   <!-- COIN TABLE TEMPLATE -->
@@ -227,7 +227,7 @@ Apply one or more of the following classes to get the desired effect
 				    
 		<li><a href="https://discord.gg/8kUEQwaPhW" class="color--primary"><i class="fab fa-discord fa-2x"></i> Join our Discord Channel</a></li>
 		</ul>
-
+		<br>
                 <h3 class="text-center" style="color:#19D63F">POOL FEATURES</h3>
                             <ul>
 		<li> Miner stats with charts, shares, rewards and paid earnings.</li>
@@ -249,7 +249,7 @@ Apply one or more of the following classes to get the desired effect
               <h5 class="card-header bg-black"><i class="fas fa-coins"></i> Terms of Operation</h5>
               <div class="card-body p-0">
                 <p class="m-4">
-                  Welcome to solopool.pro BCH solo Pool. These Terms of Operation govern your participation in our mining pool.
+                  Welcome to solopool.pro BCH Solo Pool. These Terms of Operation govern your participation in our mining pool.
                   By joining and participating, you agree to comply with and be bound by the following terms:
                 </p>
                 <h6 class="mt-3 ml-4"><i class="fas fa-cogs"></i> Mining Operations</h6>
@@ -257,17 +257,13 @@ Apply one or more of the following classes to get the desired effect
                   1. Members agree to contribute their computing power to the pool. The pool operates continuously, and
                   contributions are measured and rewarded based on predefined algorithms.
                 </p>
-                <p class="ml-4">
-                  2. Hoosat Pool utilizes various mining protocols. Members should ensure their mining hardware and
-                  software are compatible with pool requirements.
-                </p>
                 <h6 class="mt-3 ml-4"><i class="fas fa-coins"></i> Rewards and Payouts</h6>
                 <p class="ml-4">
                   3. Mining rewards are distributed based on each member's contribution to the pool's total hashrate.
-                  The reward distribution model may vary (PPLNS, SOLO, PROP, PPLNSF).
+                  The reward distribution model is (SOLO).
                 </p>
                 <p class="ml-4">
-                  4. Payouts are made periodically, and minimum payout thresholds may apply. Members are responsible
+                  4. Payouts are made after block maturity, and minimum payout thresholds may apply. Members are responsible
                   for providing accurate wallet addresses for payouts.
                 </p>
                 <h6 class="mt-3 ml-4"><i class="fas fa-shield-alt"></i> Security and Conduct</h6>
@@ -287,7 +283,7 @@ Apply one or more of the following classes to get the desired effect
                 </p>
                 <h6 class="mt-3 ml-4"><i class="fas fa-exclamation-triangle"></i> Liability</h6>
                 <p class="ml-4">
-                  8. solopool.pro is not liable for any losses or damages arising from participation in the pool,
+                  8. We are not liable for any losses or damages arising from participation in the pool,
                   including but not limited to hardware failures, network issues, or changes in cryptocurrency value.
                 </p>
                 <p class="ml-4">
@@ -305,12 +301,6 @@ Apply one or more of the following classes to get the desired effect
                   13. The pool collects minimal data necessary for operations, such as IP addresses and mining
                   performance metrics. This data is used solely for managing and optimizing the pool.
                 </p>
-                <ul>
-                  <li><a href="https://hoosat.fi/tietosuojaseloste">Privacy statement</a></li>
-                  <li><a href="https://hoosat.fi/k%C3%A4ytt%C3%B6ehdot">Terms of use</a></li>
-                  <li><a href="https://hoosat.fi/ev%C3%A4stek%C3%A4yt%C3%A4nt%C3%B6">Cookie Policy</a></li>
-                  <li><a href="https://hoosat.fi/gdpr">GDPR</a></li>
-                </ul>
                 <h6 class="mt-3 ml-4"><i class="fas fa-edit"></i> Amendments</h6>
                 <p class="ml-4">
                   14. We reserve the right to amend these terms at any time. Members will be
@@ -476,9 +466,20 @@ Apply one or more of the following classes to get the desired effect
                   <div class="info-box">
                     <span class="info-box-icon bg-yellow"><i class="fas fa-credit-card"></i></span>
                     <div class="info-box-content">
-                      <span class="info-box-text">Payments done</span>
+                      <span class="info-box-text">Total Paymnets</span>
                       <span class="info-box-number">
                         <div id="paymentsDone"></div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+		<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-red"><i class="fas fa-clock"></i></span>
+                    <div class="info-box-content">
+                      <span class="info-box-text">Last Network Block</span>
+                      <span class="info-box-number">
+                        <div id="lastNetworkBlock"></div>
                       </span>
                     </div>
                   </div>
@@ -487,7 +488,7 @@ Apply one or more of the following classes to get the desired effect
                   <div class="info-box">
                     <span class="info-box-icon bg-red"><i class="fas fa-clock"></i></span>
                     <div class="info-box-content">
-                      <span class="info-box-text">Last block</span>
+                      <span class="info-box-text">Last Pool Block</span>
                       <span class="info-box-number">
                         <div id="lastBlock"></div>
                       </span>
