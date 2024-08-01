@@ -696,7 +696,7 @@ function loadStatsData() {
 
           $("#poolHashRate").text(_formatter(value.poolStats.poolHashrate, 5, "H/s"));
           $("#poolMiners").text(value.poolStats.connectedMiners + " Miner(s)");
-          $("#lastNetworkBlock").text(dateConvertor(value.networkStats.lastNetworkBlockTime));
+          $("#lastNetworkBlock").text(_formatter(value.networkStats.lastNetworkBlockTime));
           $("#networkHashRate").text(_formatter(value.networkStats.networkHashrate, 5, "H/s"));
           $("#networkDifficulty").text(_formatter(value.networkStats.networkDifficulty, 5, ""));
         }
