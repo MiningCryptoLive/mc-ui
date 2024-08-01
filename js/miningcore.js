@@ -64,6 +64,44 @@ $(document).ready(function () {
     }
   });
 });
+// Time convert Local -> UTC
+function convertLocalDateToUTCDate(date, toUTC) {
+	date = new Date(date);
+	var localOffset = date.getTimezoneOffset() * 60000;
+	var localTime = date.getTime();
+	if (toUTC) {
+	date = localTime + localOffset;
+	} else {
+	date = localTime - localOffset;
+	}
+	newDate = new Date(date);
+	return newDate;
+}
+
+
+// Time convert UTC -> Local
+function convertUTCDateToLocalDate(date) {
+	var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
+	var localOffset = date.getTimezoneOffset() / 60;
+	var hours = date.getUTCHours();
+	newDate.setHours(hours - localOffset);
+	return newDate;
+}
+
+
+// String convert -> Date
+function dateConvertor(date){
+   var options = {  
+     year: "numeric",  
+     month: "numeric",  
+     day: "numeric"
+   };  
+
+   var newDateFormat = new Date(date).toLocaleDateString("en-US", options); 
+   var newTimeFormat = new Date(date).toLocaleTimeString();  
+   var dateAndTime = newDateFormat +' '+ newTimeFormat        
+   return dateAndTime
+}
 
 // Load INDEX Page content
 function loadIndex() {
@@ -696,7 +734,7 @@ function loadStatsData() {
 
           $("#poolHashRate").text(_formatter(value.poolStats.poolHashrate, 5, "H/s"));
           $("#poolMiners").text(value.poolStats.connectedMiners + " Miner(s)");
-          $("#lastNetworkBlock").text(_formatter(value.networkStats.lastNetworkBlockTime));
+          $("#lastNetworkBlock").text(dateConvertor(value.networkStats.lastNetworkBlockTime));
           $("#networkHashRate").text(_formatter(value.networkStats.networkHashrate, 5, "H/s"));
           $("#networkDifficulty").text(_formatter(value.networkStats.networkDifficulty, 5, ""));
         }
