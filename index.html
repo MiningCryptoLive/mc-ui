@@ -495,6 +495,35 @@ Apply one or more of the following classes to get the desired effect
                     </div>
                   </div>
                 </div>
+		<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-red"><i class="fas fa-dollar-sign"></i></span>
+                    <div class="info-box-content">
+                      <span class="info-box-text">Price USD</span>
+                      <span class="info-box-number">
+                        <div id="info2"></div>
+                      </span>
+			<script>
+const getBtcData2 = async () => {
+   fetch('https://min-api.cryptocompare.com/data/price?fsym=BCH&tsyms=USD')
+  .then(response => response.json())
+  .then(data2 => {
+    console.log(data2);
+    document.getElementById("info2").innerHTML = '<b style="color:#ffff00;"> $' + 1 * data2.USD + '</b>'
+    
+  });
+}
+getBtcData2();
+tcount=setInterval(function(){
+  tcount++
+  if (tcount==10) {getBtcData2(); tcount=0}
+  document.getElementById("infotime2").innerHTML = 'Next update in ' + (900-tcount) + ' seconds'
+},1000);
+
+</script>
+                    </div>
+                  </div>
+                </div>
               </div><!-- /.row -->
               <div class="row">
                 <div class="col-lg-6 col-md-12">
