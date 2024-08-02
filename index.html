@@ -528,6 +528,35 @@ tcount=setInterval(function(){
                   <div class="info-box">
                     <span class="info-box-icon bg-green"><i class="fas fa-dollar-sign"></i></span>
                     <div class="info-box-content">
+                      <span class="info-box-text">Price BTC</span>
+                      <span class="info-box-number">
+                        <div id="info3"></div>
+                      </span>
+		<script>
+const getBtcData3 = async () => {
+   fetch('https://min-api.cryptocompare.com/data/price?fsym=BCH&tsyms=BTC')
+  .then(response => response.json())
+  .then(data3 => {
+    console.log(data3);
+    document.getElementById("info3").innerHTML = '<b style="color:#000000;"> $' + 1 * data3.USD + '</b>'
+    
+  });
+}
+getBtcData3();
+tcount=setInterval(function(){
+  tcount++
+  if (tcount==10) {getBtcData3(); tcount=0}
+  document.getElementById("infotime3").innerHTML = 'Next update in ' + (900-tcount) + ' seconds'
+},1000);
+
+</script>
+                    </div>
+                  </div>
+                </div>
+		<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="fas fa-dollar-sign"></i></span>
+                    <div class="info-box-content">
                       <span class="info-box-text">Block Reward USD</span>
                       <span class="info-box-number">
                         <div id="info1"></div>
