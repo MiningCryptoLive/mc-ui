@@ -36,9 +36,12 @@ var stratumAddress = "stratum+tcp://domain-name.com"
 Do you have an idea on what to add to the website, or you found a bug,
 let me know and we will see what we can do.
 
+<b>Features</b>
+Multiple coins.
+Miner Adjustable payout.
 
 <b>Changes:</b></br>
-Version 1.0  (1 jul 2019)
+Version 1.5  (08/08/2024)
 - simple and fast WebUI (html and javascript)
 - one file website displays selected info block and hides the rest
 - one modern colorful look 
