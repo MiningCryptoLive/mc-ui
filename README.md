@@ -36,9 +36,9 @@ var stratumAddress = "stratum+tcp://domain-name.com"
 Do you have an idea on what to add to the website, or you found a bug,
 let me know and we will see what we can do.
 
-<b>Features</b>
-Multiple coins.
-Miner Adjustable payout.
+<b>Features</b></br>
+Multiple coins.</br>
+Miner Adjustable payout.</br>
 
 <b>Changes:</b></br>
 Version 1.5  (08/08/2024)
