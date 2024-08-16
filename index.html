@@ -522,7 +522,7 @@ const getBtcData1 = async () => {
   .then(response => response.json())
   .then(data1 => {
     console.log(data1);
-    document.getElementById("info1").innerHTML = '<b style="color:#000000;"> $' + 2.048 * data1.USD + '</b>'
+    document.getElementById("info1").innerHTML = '<b style="color:#000000;"> $' + 2 * data1.USD + '</b>'
     
   });
 }
