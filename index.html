@@ -177,7 +177,7 @@ Apply one or more of the following classes to get the desired effect
       <!-- INDEX HOME PAGE -->
       <div class="page page-index">
         <section class="content-header text-center">
-          <h1>SOLOPOOL.US</h1>
+          <h1>ETC.SOLOPOOL.US</h1>
         </section>
         <div class="content container-fluid">
           </br>
@@ -488,7 +488,7 @@ Apply one or more of the following classes to get the desired effect
                       </span>
 			<script>
 const getBtcData2 = async () => {
-   fetch('https://min-api.cryptocompare.com/data/price?fsym=BCH&tsyms=USD')
+   fetch('https://min-api.cryptocompare.com/data/price?fsym=ETC&tsyms=USD')
   .then(response => response.json())
   .then(data2 => {
     console.log(data2);
@@ -512,7 +512,7 @@ tcount=setInterval(function(){
                     <span class="info-box-icon bg-green"><i class="fas fa-dollar-sign"></i></span>
                     <div class="info-box-content">
                       <span class="info-box-text">Block Reward USD</span>
-			<span class="info-box-text-bold">3.125 BCH</span>
+			<span class="info-box-text-bold">2.048</span>
                       <span class="info-box-number">
                         <div id="info1"></div>
                       </span>
@@ -522,7 +522,7 @@ const getBtcData1 = async () => {
   .then(response => response.json())
   .then(data1 => {
     console.log(data1);
-    document.getElementById("info1").innerHTML = '<b style="color:#000000;"> $' + 3.125 * data1.USD + '</b>'
+    document.getElementById("info1").innerHTML = '<b style="color:#000000;"> $' + 2.048 * data1.USD + '</b>'
     
   });
 }
@@ -623,9 +623,9 @@ tcount=setInterval(function(){
 	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 	<div class="info-box text-center">
 	<span class="info-box-text">Information</span>
-	<a href="https://blockchair.com/bitcoin-cash" target="_blank" rel="noopener noreferrer">Block Explorer</a><br>
-	<a href="https://blockchair.com/bitcoin-cash" target="_blank" rel="noopener noreferrer">Network Stats</a><br>
-	<a href="https://blockchair.com/bitcoin-cash/address/bitcoincash:qqs4xanpph2fs652pppkycnh4fhdflc87sxk5ylq0r" target="_blank" rel="noopener noreferrer">Pool Wallet</a>
+	<a href="https://etcblockexplorer.com" target="_blank" rel="noopener noreferrer">Block Explorer</a><br>
+	<a href="https://etcblockexplorer.com" target="_blank" rel="noopener noreferrer">Network Stats</a><br>
+	<a href="https://etcblockexplorer.com/address/0x47ed9bb4487A58227f81ff004901dEcc6f19b172" target="_blank" rel="noopener noreferrer">Pool Wallet</a>
 	            </div>
                   </div>
 	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
